@@ -10,16 +10,13 @@ import hashlib
 etree.register_namespace('', 'http://www.w3.org/2000/svg')
 
 # Fine-grained personal access token with All Repositories access:
-# Account permissions: read:Followers, read:Starring, read:Watching
-# Repository permissions: read:Commit statuses, read:Contents, read:Issues, read:Metadata, read:Pull Requests
 ACCESS_TOKEN = os.environ.get('ACCESS_TOKEN', '')
 USER_NAME = os.environ.get('USER_NAME', 'STUCKINLOOP8')
 HEADERS = {'authorization': 'token ' + ACCESS_TOKEN} if ACCESS_TOKEN else {}
 
 # Birthday or start date for Uptime calculation (YYYY, MM, DD)
-# Defaults to 2005-06-15 (or customize via BIRTHDAY env: YYYY-MM-DD)
 DEFAULT_BIRTHDAY = datetime.datetime(2005, 6, 15)
-if 'BIRTHDAY' in os.environ:
+if 'BIRTHDAY' in os.environ and os.environ['BIRTHDAY']:
     try:
         parts = [int(p) for p in os.environ['BIRTHDAY'].split('-')]
         DEFAULT_BIRTHDAY = datetime.datetime(parts[0], parts[1], parts[2])
@@ -36,10 +33,6 @@ QUERY_COUNT = {
 }
 
 def daily_readme(birthday):
-    """
-    Returns the length of time since birthday
-    e.g. 'XX years, XX months, XX days'
-    """
     diff = relativedelta.relativedelta(datetime.datetime.today(), birthday)
     return '{} {}, {} {}, {} {}{}'.format(
         diff.years, 'year' + format_plural(diff.years),
@@ -66,94 +59,117 @@ def simple_request(func_name, query, variables):
     )
     if request.status_code == 200:
         return request
-    raise Exception(func_name, ' has failed with status', request.status_code, request.text, QUERY_COUNT)
+    raise Exception(f"{func_name} failed with status {request.status_code}: {request.text}")
 
 def user_getter(username):
     query_count('user_getter')
     if ACCESS_TOKEN:
-        query = '''
-        query($login: String!){
-            user(login: $login) {
-                id
-                createdAt
-            }
-        }'''
-        request = simple_request(user_getter.__name__, query, {'login': username})
-        return {'id': request.json()['data']['user']['id']}, request.json()['data']['user']['createdAt']
-    else:
-        # Fallback to public REST API
-        r = requests.get(f'https://api.github.com/users/{username}')
+        try:
+            query = '''
+            query($login: String!){
+                user(login: $login) {
+                    id
+                    createdAt
+                }
+            }'''
+            request = simple_request(user_getter.__name__, query, {'login': username})
+            user_data = request.json().get('data', {}).get('user', {})
+            if user_data:
+                return {'id': user_data.get('id')}, user_data.get('createdAt', '')
+        except Exception as e:
+            print(f"GraphQL user_getter failed: {e}")
+
+    try:
+        r = requests.get(f'https://api.github.com/users/{username}', headers=HEADERS)
         data = r.json()
         return {'id': data.get('node_id', '')}, data.get('created_at', '')
+    except Exception:
+        return {'id': ''}, ''
 
 def follower_getter(username):
     query_count('follower_getter')
     if ACCESS_TOKEN:
-        query = '''
-        query($login: String!){
-            user(login: $login) {
-                followers {
-                    totalCount
-                }
-            }
-        }'''
-        request = simple_request(follower_getter.__name__, query, {'login': username})
-        return int(request.json()['data']['user']['followers']['totalCount'])
-    else:
         try:
-            r = requests.get(f'https://api.github.com/users/{username}')
-            if r.status_code == 200:
-                return int(r.json().get('followers', 3))
-        except Exception:
-            pass
-        return 3
+            query = '''
+            query($login: String!){
+                user(login: $login) {
+                    followers {
+                        totalCount
+                    }
+                }
+            }'''
+            request = simple_request(follower_getter.__name__, query, {'login': username})
+            count = request.json().get('data', {}).get('user', {}).get('followers', {}).get('totalCount')
+            if count is not None:
+                return int(count)
+        except Exception as e:
+            print(f"GraphQL follower_getter failed: {e}")
+
+    try:
+        r = requests.get(f'https://api.github.com/users/{username}', headers=HEADERS)
+        if r.status_code == 200:
+            return int(r.json().get('followers', 3))
+    except Exception:
+        pass
+    return 3
 
 def graph_repos_stars(count_type, owner_affiliation, cursor=None):
     query_count('graph_repos_stars')
     if ACCESS_TOKEN:
-        query = '''
-        query ($owner_affiliation: [RepositoryAffiliation], $login: String!, $cursor: String) {
-            user(login: $login) {
-                repositories(first: 100, after: $cursor, ownerAffiliations: $owner_affiliation) {
-                    totalCount
-                    edges {
-                        node {
-                            ... on Repository {
-                                nameWithOwner
-                                stargazers {
-                                    totalCount
+        try:
+            query = '''
+            query ($owner_affiliation: [RepositoryAffiliation], $login: String!, $cursor: String) {
+                user(login: $login) {
+                    repositories(first: 100, after: $cursor, ownerAffiliations: $owner_affiliation) {
+                        totalCount
+                        edges {
+                            node {
+                                ... on Repository {
+                                    nameWithOwner
+                                    stargazers {
+                                        totalCount
+                                    }
                                 }
                             }
                         }
-                    }
-                    pageInfo {
-                        endCursor
-                        hasNextPage
+                        pageInfo {
+                            endCursor
+                            hasNextPage
+                        }
                     }
                 }
-            }
-        }'''
-        variables = {'owner_affiliation': owner_affiliation, 'login': USER_NAME, 'cursor': cursor}
-        request = simple_request(graph_repos_stars.__name__, query, variables)
-        if count_type == 'repos':
-            return request.json()['data']['user']['repositories']['totalCount']
-        elif count_type == 'stars':
-            edges = request.json()['data']['user']['repositories']['edges']
-            return sum(edge['node']['stargazers']['totalCount'] for edge in edges)
-    else:
-        # Fallback to REST API with rate-limit safety
-        try:
-            r = requests.get(f'https://api.github.com/users/{USER_NAME}/repos?per_page=100')
-            if r.status_code == 200:
-                repos = r.json()
-                if isinstance(repos, list):
-                    if count_type == 'repos':
-                        return len(repos)
-                    elif count_type == 'stars':
-                        return sum(repo.get('stargazers_count', 0) for repo in repos)
-        except Exception:
-            pass
-        return 3 if count_type == 'repos' else 1
+            }'''
+            variables = {'owner_affiliation': owner_affiliation, 'login': USER_NAME, 'cursor': cursor}
+            request = simple_request(graph_repos_stars.__name__, query, variables)
+            user_repos = request.json().get('data', {}).get('user', {}).get('repositories', {})
+            if count_type == 'repos':
+                return user_repos.get('totalCount', 3)
+            elif count_type == 'stars':
+                edges = user_repos.get('edges', [])
+                total_stars = 0
+                for edge in edges:
+                    if edge and isinstance(edge, dict):
+                        node = edge.get('node')
+                        if node and isinstance(node, dict):
+                            stargazers = node.get('stargazers')
+                            if stargazers and isinstance(stargazers, dict):
+                                total_stars += stargazers.get('totalCount', 0)
+                return total_stars
+        except Exception as e:
+            print(f"GraphQL graph_repos_stars failed: {e}")
+
+    try:
+        r = requests.get(f'https://api.github.com/users/{USER_NAME}/repos?per_page=100', headers=HEADERS)
+        if r.status_code == 200:
+            repos = r.json()
+            if isinstance(repos, list):
+                if count_type == 'repos':
+                    return len(repos)
+                elif count_type == 'stars':
+                    return sum(repo.get('stargazers_count', 0) for repo in repos)
+    except Exception:
+        pass
+    return 3 if count_type == 'repos' else 1
 
 def recursive_loc(owner, repo_name, cursor=None, addition_total=0, deletion_total=0, my_commits=0):
     query_count('recursive_loc')
@@ -187,99 +203,119 @@ def recursive_loc(owner, repo_name, cursor=None, addition_total=0, deletion_tota
         }
     }'''
     variables = {'repo_name': repo_name, 'owner': owner, 'cursor': cursor}
-    request = simple_request(recursive_loc.__name__, query, variables)
-    data = request.json().get('data', {}).get('repository', {})
-    if not data or not data.get('defaultBranchRef'):
-        return addition_total, deletion_total, my_commits
+    try:
+        request = simple_request(recursive_loc.__name__, query, variables)
+        data = request.json().get('data', {}).get('repository', {})
+        if not data or not data.get('defaultBranchRef'):
+            return addition_total, deletion_total, my_commits
 
-    history = data['defaultBranchRef']['target']['history']
-    for node in history['edges']:
-        author_user = node['node']['author']['user']
-        if author_user and author_user.get('id') == OWNER_ID.get('id'):
-            my_commits += 1
-            addition_total += node['node']['additions']
-            deletion_total += node['node']['deletions']
+        history = data['defaultBranchRef']['target']['history']
+        for node in history.get('edges', []):
+            if not node or not node.get('node'):
+                continue
+            author_user = node['node'].get('author', {}).get('user')
+            if author_user and author_user.get('id') == OWNER_ID.get('id'):
+                my_commits += 1
+                addition_total += node['node'].get('additions', 0)
+                deletion_total += node['node'].get('deletions', 0)
 
-    if history['pageInfo']['hasNextPage']:
-        return recursive_loc(owner, repo_name, history['pageInfo']['endCursor'], addition_total, deletion_total, my_commits)
+        if history.get('pageInfo', {}).get('hasNextPage'):
+            return recursive_loc(owner, repo_name, history['pageInfo'].get('endCursor'), addition_total, deletion_total, my_commits)
+    except Exception as e:
+        print(f"recursive_loc skipped for {owner}/{repo_name}: {e}")
     return addition_total, deletion_total, my_commits
 
 def loc_query(owner_affiliation):
     query_count('loc_query')
-    if not ACCESS_TOKEN:
-        # Approximate LOC via public repos language stats or fallback
-        total_bytes = 0
+    if ACCESS_TOKEN:
         try:
-            r = requests.get(f'https://api.github.com/users/{USER_NAME}/repos?per_page=100')
-            if r.status_code == 200:
-                repos = r.json()
-                if isinstance(repos, list):
-                    for repo in repos:
-                        lang_r = requests.get(repo.get('languages_url', ''))
-                        if lang_r.status_code == 200:
-                            total_bytes += sum(lang_r.json().values())
-        except Exception:
-            pass
-        est_loc = max(6508, total_bytes // 40)
-        return [est_loc, 0, est_loc, True]
-
-    # GraphQL LOC calculation
-    query = '''
-    query ($owner_affiliation: [RepositoryAffiliation], $login: String!) {
-        user(login: $login) {
-            repositories(first: 60, ownerAffiliations: $owner_affiliation) {
-                edges {
-                    node {
-                        nameWithOwner
-                        isFork
+            query = '''
+            query ($owner_affiliation: [RepositoryAffiliation], $login: String!) {
+                user(login: $login) {
+                    repositories(first: 60, ownerAffiliations: $owner_affiliation) {
+                        edges {
+                            node {
+                                nameWithOwner
+                                isFork
+                            }
+                        }
                     }
                 }
-            }
-        }
-    }'''
-    request = simple_request(loc_query.__name__, query, {'owner_affiliation': owner_affiliation, 'login': USER_NAME})
-    repos = request.json().get('data', {}).get('user', {}).get('repositories', {}).get('edges', [])
-    
-    total_add, total_del, total_commits = 0, 0, 0
-    for edge in repos:
-        name_with_owner = edge['node']['nameWithOwner']
-        owner, repo_name = name_with_owner.split('/')
-        try:
-            add, rem, commits = recursive_loc(owner, repo_name)
-            total_add += add
-            total_del += rem
-            total_commits += commits
-        except Exception as e:
-            print(f"Skipping repo {name_with_owner}: {e}")
+            }'''
+            request = simple_request(loc_query.__name__, query, {'owner_affiliation': owner_affiliation, 'login': USER_NAME})
+            repos = request.json().get('data', {}).get('user', {}).get('repositories', {}).get('edges', [])
+            
+            total_add, total_del, total_commits = 0, 0, 0
+            for edge in repos:
+                if not edge or not edge.get('node'):
+                    continue
+                name_with_owner = edge['node'].get('nameWithOwner')
+                if not name_with_owner or '/' not in name_with_owner:
+                    continue
+                owner, repo_name = name_with_owner.split('/')
+                try:
+                    add, rem, commits = recursive_loc(owner, repo_name)
+                    total_add += add
+                    total_del += rem
+                    total_commits += commits
+                except Exception as e:
+                    print(f"Skipping repo {name_with_owner}: {e}")
 
-    net_loc = total_add - total_del
-    return [total_add, total_del, net_loc, False]
+            net_loc = total_add - total_del
+            if total_add > 0:
+                return [total_add, total_del, net_loc, False]
+        except Exception as e:
+            print(f"GraphQL loc_query failed: {e}")
+
+    # Fallback to language bytes calculation
+    total_bytes = 0
+    try:
+        r = requests.get(f'https://api.github.com/users/{USER_NAME}/repos?per_page=100', headers=HEADERS)
+        if r.status_code == 200:
+            repos = r.json()
+            if isinstance(repos, list):
+                for repo in repos:
+                    lang_r = requests.get(repo.get('languages_url', ''), headers=HEADERS)
+                    if lang_r.status_code == 200:
+                        total_bytes += sum(lang_r.json().values())
+    except Exception:
+        pass
+    est_loc = max(6508, total_bytes // 40)
+    return [est_loc, 0, est_loc, True]
 
 def commit_counter():
-    # If ACCESS_TOKEN, get actual commit contributions calendar
     if ACCESS_TOKEN:
-        query = '''
-        query($login: String!) {
-            user(login: $login) {
-                contributionsCollection {
-                    contributionCalendar {
-                        totalContributions
+        try:
+            query = '''
+            query($login: String!) {
+                user(login: $login) {
+                    contributionsCollection {
+                        contributionCalendar {
+                            totalContributions
+                        }
                     }
                 }
-            }
-        }'''
-        request = simple_request("commit_counter", query, {'login': USER_NAME})
-        return int(request.json()['data']['user']['contributionsCollection']['contributionCalendar']['totalContributions'])
-    else:
-        # Fallback to counting commits across public events / repos
-        r = requests.get(f'https://api.github.com/users/{USER_NAME}/events/public')
+            }'''
+            request = simple_request("commit_counter", query, {'login': USER_NAME})
+            contrib = request.json().get('data', {}).get('user', {}).get('contributionsCollection', {}).get('contributionCalendar', {}).get('totalContributions')
+            if contrib is not None:
+                return int(contrib)
+        except Exception as e:
+            print(f"GraphQL commit_counter failed: {e}")
+
+    try:
+        r = requests.get(f'https://api.github.com/users/{USER_NAME}/events/public', headers=HEADERS)
         events = r.json()
         commits = 0
         if isinstance(events, list):
             for ev in events:
                 if ev.get('type') == 'PushEvent':
                     commits += len(ev.get('payload', {}).get('commits', []))
-        return max(54, commits)
+        if commits > 0:
+            return commits
+    except Exception:
+        pass
+    return 54
 
 def justify_format(root, element_id, new_text, length=0):
     if isinstance(new_text, int):
@@ -333,7 +369,6 @@ if __name__ == '__main__':
     commit_data = commit_counter()
     total_loc = loc_query(['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'])
 
-    # Format loc numbers
     formatted_loc = ['{:,}'.format(x) for x in total_loc[:3]]
 
     print(f"Stats summary:")

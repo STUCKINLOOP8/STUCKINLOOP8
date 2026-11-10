@@ -15,7 +15,7 @@ USER_NAME = os.environ.get('USER_NAME', 'STUCKINLOOP8')
 HEADERS = {'authorization': 'token ' + ACCESS_TOKEN} if ACCESS_TOKEN else {}
 
 # Birthday or start date for Uptime calculation (YYYY, MM, DD)
-DEFAULT_BIRTHDAY = datetime.datetime(2005, 6, 15)
+DEFAULT_BIRTHDAY = datetime.datetime(2007, 3, 01)
 if 'BIRTHDAY' in os.environ and os.environ['BIRTHDAY']:
     try:
         parts = [int(p) for p in os.environ['BIRTHDAY'].split('-')]

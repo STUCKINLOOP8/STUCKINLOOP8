@@ -106,9 +106,9 @@
       <tspan x="425" dy="16">    |   |       |   X   |       |   |   </tspan>
       <tspan x="425" dy="16">    |   |       |  / \  |       |   |   </tspan>
       <tspan x="425" dy="16">     \   \     /  /   \  \     /   /    </tspan>
-      <tspan x="425" dy="16">      \   '---'  /     \  '---'  /      </tspan>
-      <tspan x="425" dy="16">       '.     .'       '.     .'        </tspan>
-      <tspan x="425" dy="16">         '---'           '---'          </tspan>
+      <tspan x="425" dy="16">      \   '---'   /   \   '---'   /     </tspan>
+      <tspan x="425" dy="16">       '.       .'     '.       .'      </tspan>
+      <tspan x="425" dy="16">         '-----'         '-----'        </tspan>
     </text>
     <g transform="translate(325, 244)">
       <rect width="200" height="22" rx="11" fill="none" stroke="#ff2a5f" stroke-width="1.2" class="text-red" />
@@ -126,9 +126,9 @@
       <tspan x="425" dy="16">    |   |       |   X   |       |   |   </tspan>
       <tspan x="425" dy="16">    |   |       |  / \  |       |   |   </tspan>
       <tspan x="425" dy="16">     \   \     /  /   \  \     /   /    </tspan>
-      <tspan x="425" dy="16">      \   '---'  /     \  '---'  /      </tspan>
-      <tspan x="425" dy="16">       '.     .'       '.     .'        </tspan>
-      <tspan x="425" dy="16">         '---'           '---'          </tspan>
+      <tspan x="425" dy="16">      \   '---'   /   \   '---'   /     </tspan>
+      <tspan x="425" dy="16">       '.       .'     '.       .'      </tspan>
+      <tspan x="425" dy="16">         '-----'         '-----'        </tspan>
     </text>
     <g transform="translate(325, 244)">
       <rect width="200" height="22" rx="11" fill="none" stroke="#ff1493" stroke-width="1.2" class="text-pink" />
@@ -146,9 +146,9 @@
       <tspan x="425" dy="16">    |   |       |   X   |       |   |   </tspan>
       <tspan x="425" dy="16">    |   |       |  / \  |       |   |   </tspan>
       <tspan x="425" dy="16">     \   \     /  /   \  \     /   /    </tspan>
-      <tspan x="425" dy="16">      \   '---'  /     \  '---'  /      </tspan>
-      <tspan x="425" dy="16">       '.     .'       '.     .'        </tspan>
-      <tspan x="425" dy="16">         '---'           '---'          </tspan>
+      <tspan x="425" dy="16">      \   '---'   /   \   '---'   /     </tspan>
+      <tspan x="425" dy="16">       '.       .'     '.       .'      </tspan>
+      <tspan x="425" dy="16">         '-----'         '-----'        </tspan>
     </text>
     <g transform="translate(325, 244)">
       <rect width="200" height="22" rx="11" fill="none" stroke="#00ff66" stroke-width="1.2" class="text-green" />
@@ -166,9 +166,9 @@
       <tspan x="425" dy="16">    |   |       |   X   |       |   |   </tspan>
       <tspan x="425" dy="16">    |   |       |  / \  |       |   |   </tspan>
       <tspan x="425" dy="16">     \   \     /  /   \  \     /   /    </tspan>
-      <tspan x="425" dy="16">      \   '---'  /     \  '---'  /      </tspan>
-      <tspan x="425" dy="16">       '.     .'       '.     .'        </tspan>
-      <tspan x="425" dy="16">         '---'           '---'          </tspan>
+      <tspan x="425" dy="16">      \   '---'   /   \   '---'   /     </tspan>
+      <tspan x="425" dy="16">       '.       .'     '.       .'      </tspan>
+      <tspan x="425" dy="16">         '-----'         '-----'        </tspan>
     </text>
     <g transform="translate(325, 244)">
       <rect width="200" height="22" rx="11" fill="none" stroke="#ffe600" stroke-width="1.2" class="text-yellow" />

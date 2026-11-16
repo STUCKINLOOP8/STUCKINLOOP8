@@ -1,9 +1,6 @@
 <div align="center">
   <a href="https://github.com/STUCKINLOOP8">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="dark_mode.svg">
-      <img alt="Sambhav (@STUCKINLOOP8) GitHub Terminal Profile" src="light_mode.svg">
-    </picture>
+    <img src="assets/infinity-header.svg" alt="STUCKINLOOP8 Infinity Terminal" width="100%" />
   </a>
 </div>
 

@@ -24,7 +24,7 @@
 
   <!-- Terminal Command Prompt -->
   <text x="84" y="23" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="0.3">
-    <tspan fill="#58a6ff" font-weight="600">stuckinloop8</tspan><tspan fill="#8b949e">@</tspan><tspan fill="#bc8cff">quant</tspan><tspan fill="#8b949e">:</tspan><tspan fill="#79c0ff">~</tspan><tspan fill="#7ee787" font-weight="bold">$</tspan><tspan fill="#f0f6fc"> git log --contributions --snake</tspan>
+    <tspan fill="#7ee787" font-weight="bold">$</tspan><tspan fill="#f0f6fc"> git log --contributions --snake</tspan>
     <tspan fill="#00ff88" font-weight="bold" class="cursor-blink"> █</tspan>
   </text>
 

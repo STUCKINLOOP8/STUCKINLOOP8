@@ -45,10 +45,20 @@ jobs:
           BIRTHDAY: ${{ secrets.BIRTHDAY }}
         run: python today.py
 
+      - name: Generate Contribution Snake Animation
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            assets/github-contribution-grid-snake.svg
+            assets/github-contribution-grid-snake-dark.svg?palette=github-dark
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add dark_mode.svg light_mode.svg
-          git commit -m "Auto-update profile README stats [skip ci]" || echo "No changes to commit"
+          git add dark_mode.svg light_mode.svg assets/
+          git commit -m "Auto-update profile stats and snake animation [skip ci]" || echo "No changes to commit"
           git push

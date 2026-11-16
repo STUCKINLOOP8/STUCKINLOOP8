@@ -96,14 +96,14 @@ def create_svg(is_dark=True):
     lines.append(f'<tspan x="{sx}" y="410" class="cc">. </tspan><tspan class="key">Status</tspan>:<tspan class="cc"> ....................... </tspan><tspan class="value">while (true) {{ code(); }}</tspan>')
     lines.append(f'<tspan x="{sx}" y="450">- GitHub Stats</tspan> -————————————————————————————————————————————-—-')
     lines.append(f'<tspan x="{sx}" y="470" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc" id="repo_data_dots"> ...... </tspan><tspan class="value" id="repo_data">3</tspan> {{<tspan class="key">Contributed</tspan>: <tspan class="value" id="contrib_data">3</tspan>}} | <tspan class="key">Stars</tspan>:<tspan class="cc" id="star_data_dots"> ............ </tspan><tspan class="value" id="star_data">1</tspan>')
-    lines.append(f'<tspan x="{sx}" y="490" class="cc">. </tspan><tspan class="key">Commmits</tspan>:<tspan class="cc" id="commit_data_dots"> ..................... </tspan><tspan class="value" id="commit_data">54</tspan> | <tspan class="key">Followers</tspan>:<tspan class="cc" id="follower_data_dots"> ........ </tspan><tspan class="value" id="follower_data">3</tspan>')
+    lines.append(f'<tspan x="{sx}" y="490" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc" id="commit_data_dots"> ..................... </tspan><tspan class="value" id="commit_data">54</tspan> | <tspan class="key">Followers</tspan>:<tspan class="cc" id="follower_data_dots"> ........ </tspan><tspan class="value" id="follower_data">3</tspan>')
     lines.append(f'<tspan x="{sx}" y="510" class="cc">. </tspan><tspan class="key">Lines of Code on GitHub</tspan>:<tspan class="cc" id="loc_data_dots"> .. </tspan><tspan class="value" id="loc_data">6,508</tspan> ( <tspan class="addColor" id="loc_add">6,508</tspan><tspan class="addColor">++</tspan>, <tspan id="loc_del_dots"> </tspan><tspan class="delColor" id="loc_del">0</tspan><tspan class="delColor">--</tspan> )')
     lines.append('</text>')
     lines.append('</svg>')
 
     return '\n'.join(lines)
 
-target_dir = r"C:\Users\Sambhav\.gemini\antigravity\scratch\STUCKINLOOP8"
+target_dir = os.path.dirname(os.path.abspath(__file__))
 with open(os.path.join(target_dir, "dark_mode.svg"), "w", encoding="utf-8") as f:
     f.write(create_svg(is_dark=True))
 

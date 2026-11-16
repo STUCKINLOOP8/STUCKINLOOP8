@@ -531,7 +531,7 @@
           <!-- Cursive Neon Title Signature (y=214, perfectly proportioned) -->
           <!-- Programmer Neon Title (y=214, centered with blinking cursor) -->
           <g id="programmer-title">
-            <text x="438" y="214" class="programmer-title" text-anchor="middle">
+            <text x="448" y="214" class="programmer-title" text-anchor="middle">
               <tspan class="prog-text">Hello, Universe!</tspan>
               <tspan class="prog-cursor">_
                 <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />

@@ -20,26 +20,37 @@
           <stop offset="100%" stop-color="#000000" stop-opacity="0" />
         </radialGradient>
 
-        <!-- Meteor Gradients (Glowing Head to Tapered Trail) -->
+        <!-- Vivid High-Contrast Meteor Gradients -->
         <linearGradient id="meteor-cyan" x1="100%" y1="100%" x2="0%" y2="0%">
           <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
-          <stop offset="20%" stop-color="#58a6ff" stop-opacity="0.85" />
-          <stop offset="60%" stop-color="#00f2fe" stop-opacity="0.35" />
-          <stop offset="100%" stop-color="#00f2fe" stop-opacity="0" />
+          <stop offset="15%" stop-color="#ffffff" stop-opacity="0.95" />
+          <stop offset="35%" stop-color="#00f2fe" stop-opacity="0.8" />
+          <stop offset="70%" stop-color="#0066ff" stop-opacity="0.3" />
+          <stop offset="100%" stop-color="#0066ff" stop-opacity="0" />
         </linearGradient>
 
         <linearGradient id="meteor-magenta" x1="100%" y1="100%" x2="0%" y2="0%">
           <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
-          <stop offset="25%" stop-color="#f857a6" stop-opacity="0.85" />
-          <stop offset="65%" stop-color="#8957e5" stop-opacity="0.3" />
-          <stop offset="100%" stop-color="#8957e5" stop-opacity="0" />
+          <stop offset="15%" stop-color="#ffffff" stop-opacity="0.95" />
+          <stop offset="35%" stop-color="#ff2a85" stop-opacity="0.8" />
+          <stop offset="70%" stop-color="#9d00ff" stop-opacity="0.3" />
+          <stop offset="100%" stop-color="#9d00ff" stop-opacity="0" />
         </linearGradient>
 
-        <linearGradient id="meteor-gold" x1="100%" y1="100%" x2="0%" y2="0%">
+        <linearGradient id="meteor-emerald" x1="100%" y1="100%" x2="0%" y2="0%">
           <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
-          <stop offset="25%" stop-color="#ffe57f" stop-opacity="0.85" />
-          <stop offset="65%" stop-color="#39d353" stop-opacity="0.3" />
-          <stop offset="100%" stop-color="#39d353" stop-opacity="0" />
+          <stop offset="15%" stop-color="#ffffff" stop-opacity="0.95" />
+          <stop offset="35%" stop-color="#00ff88" stop-opacity="0.8" />
+          <stop offset="70%" stop-color="#00aa44" stop-opacity="0.3" />
+          <stop offset="100%" stop-color="#00aa44" stop-opacity="0" />
+        </linearGradient>
+
+        <linearGradient id="meteor-amber" x1="100%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+          <stop offset="15%" stop-color="#ffffff" stop-opacity="0.95" />
+          <stop offset="35%" stop-color="#ffcc00" stop-opacity="0.8" />
+          <stop offset="70%" stop-color="#ff6600" stop-opacity="0.3" />
+          <stop offset="100%" stop-color="#ff6600" stop-opacity="0" />
         </linearGradient>
 
         <style>
@@ -65,70 +76,35 @@
           .sparkle-2 { animation: sparkle-pulse 4.2s infinite ease-in-out 1.2s; transform-origin: center; }
           .sparkle-3 { animation: sparkle-pulse 3.0s infinite ease-in-out 2.0s; transform-origin: center; }
 
-          /* 2. Meteor Shower Streaks */
-          @keyframes meteor-streak-1 {
-            0% {
-              opacity: 0;
-              transform: translate(0, 0);
-            }
-            2% {
-              opacity: 1;
-            }
-            11% {
-              opacity: 1;
-              transform: translate(175px, 95px);
-            }
-            15%, 100% {
-              opacity: 0;
-              transform: translate(220px, 120px);
-            }
+          /* 2. Frequent Continuous Meteor Shower Animations (Active Streaks) */
+          @keyframes meteor-fly-1 {
+            0% { opacity: 0; transform: translate(0, 0); }
+            3% { opacity: 1; }
+            22% { opacity: 1; transform: translate(220px, 120px); }
+            28%, 100% { opacity: 0; transform: translate(260px, 142px); }
           }
 
-          @keyframes meteor-streak-2 {
-            0% {
-              opacity: 0;
-              transform: translate(0, 0);
-            }
-            2% {
-              opacity: 1;
-            }
-            10% {
-              opacity: 1;
-              transform: translate(185px, 100px);
-            }
-            14%, 100% {
-              opacity: 0;
-              transform: translate(230px, 125px);
-            }
+          @keyframes meteor-fly-2 {
+            0% { opacity: 0; transform: translate(0, 0); }
+            3% { opacity: 1; }
+            22% { opacity: 1; transform: translate(230px, 125px); }
+            28%, 100% { opacity: 0; transform: translate(270px, 147px); }
           }
 
-          @keyframes meteor-streak-3 {
-            0% {
-              opacity: 0;
-              transform: translate(0, 0);
-            }
-            2% {
-              opacity: 1;
-            }
-            9% {
-              opacity: 1;
-              transform: translate(165px, 90px);
-            }
-            13%, 100% {
-              opacity: 0;
-              transform: translate(210px, 115px);
-            }
+          @keyframes meteor-fly-3 {
+            0% { opacity: 0; transform: translate(0, 0); }
+            3% { opacity: 1; }
+            22% { opacity: 1; transform: translate(200px, 110px); }
+            28%, 100% { opacity: 0; transform: translate(240px, 132px); }
           }
 
-          .meteor-1 {
-            animation: meteor-streak-1 6.2s infinite linear 0.4s;
-          }
-          .meteor-2 {
-            animation: meteor-streak-2 7.6s infinite linear 3.2s;
-          }
-          .meteor-3 {
-            animation: meteor-streak-3 8.4s infinite linear 5.6s;
-          }
+          /* Fast, recurring cycles ensuring 1-2 meteors are shooting at any given second */
+          .meteor-1 { animation: meteor-fly-1 3.2s infinite cubic-bezier(0.25, 1, 0.5, 1) 0.0s; }
+          .meteor-2 { animation: meteor-fly-2 3.5s infinite cubic-bezier(0.25, 1, 0.5, 1) 1.2s; }
+          .meteor-3 { animation: meteor-fly-3 3.8s infinite cubic-bezier(0.25, 1, 0.5, 1) 0.6s; }
+          .meteor-4 { animation: meteor-fly-1 4.1s infinite cubic-bezier(0.25, 1, 0.5, 1) 2.4s; }
+          .meteor-5 { animation: meteor-fly-2 3.0s infinite cubic-bezier(0.25, 1, 0.5, 1) 1.8s; }
+          .meteor-6 { animation: meteor-fly-3 4.4s infinite cubic-bezier(0.25, 1, 0.5, 1) 3.1s; }
 
           /* 3. Synchronized Color Cycling (Green -> Yellow -> Red -> Pink) */
           @keyframes cycle-colors {
@@ -421,29 +397,53 @@
         </g>
       </g>
 
-      <!-- Layer 4: Meteor Shower (Shooting Stars) -->
+      <!-- Layer 4: Perseid Meteor Shower (6 Rapid, High-Visibility Shooting Stars) -->
       <g id="meteor-shower-layer">
-        <!-- Meteor 1: Cyan Starlight Meteor (Upper Left) -->
-        <g transform="translate(60, 20)">
+        <!-- Meteor 1: Cyan Starlight Bolide (Upper Left) -->
+        <g transform="translate(30, 10)">
           <g class="meteor-1">
-            <line x1="-75" y1="-42" x2="0" y2="0" stroke="url(#meteor-cyan)" stroke-width="1.8" stroke-linecap="round" />
-            <circle cx="0" cy="0" r="1.4" fill="#ffffff" filter="drop-shadow(0 0 3px #58a6ff)" />
+            <line x1="-95" y1="-52" x2="0" y2="0" stroke="url(#meteor-cyan)" stroke-width="2.4" stroke-linecap="round" />
+            <circle cx="0" cy="0" r="2.0" fill="#ffffff" filter="drop-shadow(0 0 4px #00f2fe)" />
           </g>
         </g>
 
         <!-- Meteor 2: Violet/Magenta Cosmic Meteor (Upper Right) -->
-        <g transform="translate(590, 25)">
+        <g transform="translate(540, 15)">
           <g class="meteor-2">
-            <line x1="-80" y1="-44" x2="0" y2="0" stroke="url(#meteor-magenta)" stroke-width="1.8" stroke-linecap="round" />
-            <circle cx="0" cy="0" r="1.4" fill="#ffffff" filter="drop-shadow(0 0 3px #f857a6)" />
+            <line x1="-105" y1="-58" x2="0" y2="0" stroke="url(#meteor-magenta)" stroke-width="2.4" stroke-linecap="round" />
+            <circle cx="0" cy="0" r="2.0" fill="#ffffff" filter="drop-shadow(0 0 4px #ff2a85)" />
           </g>
         </g>
 
-        <!-- Meteor 3: Golden/Emerald Fast Meteor (Top Center) -->
-        <g transform="translate(320, 15)">
+        <!-- Meteor 3: Electric Emerald Shooting Star (Far Left Flank) -->
+        <g transform="translate(10, 65)">
           <g class="meteor-3">
-            <line x1="-70" y1="-38" x2="0" y2="0" stroke="url(#meteor-gold)" stroke-width="1.6" stroke-linecap="round" />
-            <circle cx="0" cy="0" r="1.3" fill="#ffffff" filter="drop-shadow(0 0 3px #ffe57f)" />
+            <line x1="-85" y1="-46" x2="0" y2="0" stroke="url(#meteor-emerald)" stroke-width="2.2" stroke-linecap="round" />
+            <circle cx="0" cy="0" r="1.8" fill="#ffffff" filter="drop-shadow(0 0 4px #00ff88)" />
+          </g>
+        </g>
+
+        <!-- Meteor 4: Golden/Amber Fireball (Far Right Flank) -->
+        <g transform="translate(620, 70)">
+          <g class="meteor-4">
+            <line x1="-100" y1="-55" x2="0" y2="0" stroke="url(#meteor-amber)" stroke-width="2.4" stroke-linecap="round" />
+            <circle cx="0" cy="0" r="2.2" fill="#ffffff" filter="drop-shadow(0 0 4px #ffcc00)" />
+          </g>
+        </g>
+
+        <!-- Meteor 5: High-Speed White-Blue Dart (Top Center Space) -->
+        <g transform="translate(290, 8)">
+          <g class="meteor-5">
+            <line x1="-90" y1="-48" x2="0" y2="0" stroke="url(#meteor-cyan)" stroke-width="2.2" stroke-linecap="round" />
+            <circle cx="0" cy="0" r="1.8" fill="#ffffff" filter="drop-shadow(0 0 4px #58a6ff)" />
+          </g>
+        </g>
+
+        <!-- Meteor 6: Deep Cosmic Perseid (Mid-Center Sweep) -->
+        <g transform="translate(420, 35)">
+          <g class="meteor-6">
+            <line x1="-95" y1="-52" x2="0" y2="0" stroke="url(#meteor-magenta)" stroke-width="2.2" stroke-linecap="round" />
+            <circle cx="0" cy="0" r="1.8" fill="#ffffff" filter="drop-shadow(0 0 4px #9d00ff)" />
           </g>
         </g>
       </g>

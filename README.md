@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/STUCKINLOOP8">
-    <img src="assets/banner.svg?v=cosmos-meteor-shower" alt="STUCKINLOOP8 Banner" width="100%" />
+    <img src="assets/banner.svg?v=perseid-meteor-storm" alt="STUCKINLOOP8 Banner" width="100%" />
   </a>
 </div>
 

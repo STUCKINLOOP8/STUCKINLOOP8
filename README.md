@@ -8,9 +8,8 @@
 
 <div align="center">
   <a href="mailto:sambhavvvvv10@gmail.com"><img src="https://img.shields.io/badge/Email-sambhavvvvv10%40gmail.com-EA4335?style=flat-square&logo=gmail&logoColor=white" alt="Email" /></a>
-  <a href="https://linkedin.com/in/sambhav"><img src="https://img.shields.io/badge/LinkedIn-sambhav-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="https://discord.com/users/stuckinloop8"><img src="https://img.shields.io/badge/Discord-stuckinloop8-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord" /></a>
-  <a href="https://github.com/STUCKINLOOP8"><img src="https://img.shields.io/badge/GitHub-STUCKINLOOP8-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub" /></a>
+  <a href="https://www.linkedin.com/in/sambhahav" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-sambhahav-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+  <a href="https://leetcode.com/u/sambhavslays/" target="_blank"><img src="https://img.shields.io/badge/LeetCode-sambhavslays-FFA116?style=flat-square&logo=leetcode&logoColor=white" alt="LeetCode" /></a>
 </div>
 
 <br/>

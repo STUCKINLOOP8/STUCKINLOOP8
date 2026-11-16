@@ -90,7 +90,7 @@ def create_svg(is_dark=True):
     lines.append(f'<tspan x="{sx}" y="270" class="cc">. </tspan><tspan class="key">Hobbies</tspan>.<tspan class="key">Hardware</tspan>:<tspan class="cc"> ................. </tspan><tspan class="value">Custom PC Building, Benchmarks</tspan>')
     lines.append(f'<tspan x="{sx}" y="310">- Contact</tspan> -——————————————————————————————————————————————————-—-')
     lines.append(f'<tspan x="{sx}" y="330" class="cc">. </tspan><tspan class="key">Email</tspan>.<tspan class="key">Personal</tspan>:<tspan class="cc"> ......................... </tspan><tspan class="value">sambhavvvvv10@gmail.com</tspan>')
-    lines.append(f'<tspan x="{sx}" y="350" class="cc">. </tspan><tspan class="key">LinkedIn</tspan>:<tspan class="cc"> ........................................ </tspan><tspan class="value">sambhav</tspan>')
+    lines.append(f'<tspan x="{sx}" y="350" class="cc">. </tspan><tspan class="key">LinkedIn</tspan>:<tspan class="cc"> ........................................ </tspan><tspan class="value">sambhahav</tspan>')
     lines.append(f'<tspan x="{sx}" y="370" class="cc">. </tspan><tspan class="key">GitHub</tspan>:<tspan class="cc"> .......................................... </tspan><tspan class="value">STUCKINLOOP8</tspan>')
     lines.append(f'<tspan x="{sx}" y="390" class="cc">. </tspan><tspan class="key">Discord</tspan>:<tspan class="cc"> ......................................... </tspan><tspan class="value">stuckinloop8</tspan>')
     lines.append(f'<tspan x="{sx}" y="410" class="cc">. </tspan><tspan class="key">Status</tspan>:<tspan class="cc"> ....................... </tspan><tspan class="value">while (true) {{ code(); }}</tspan>')

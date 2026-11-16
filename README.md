@@ -30,7 +30,7 @@
 ### `> TECH STACK & SYSTEM SPECS`
 
 ```bash
-[quant@stuckinloop8:~$ list-stack --verbose]
+[cs-math@stuckinloop8:~$ list-stack --verbose]
 ```
 
 - **Languages:** `Python` • `C++` • `SQL` • `Bash` • `JavaScript` • `HTML/CSS`
@@ -50,5 +50,5 @@
 <br/>
 
 <div align="center">
-  <sub><code>[PROCESS: RUNNING] &bull; while (true) { code(); } &bull; STUCK IN LOOP 8</code></sub>
+  <sub><code>[PROCESS: ACTIVE] &bull; while (alive) { code(); } &bull; STUCK IN LOOP 8</code></sub>
 </div>

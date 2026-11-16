@@ -14,7 +14,7 @@
 
 <br/>
 
-### `> STUCKINLOOP8 // ARCADE CONTRIBUTION MATRIX`
+### `> git log --contributions --snake`
 
 <div align="center">
   <picture>

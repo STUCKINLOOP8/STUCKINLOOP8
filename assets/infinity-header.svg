@@ -1,16 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 185" width="100%" height="185">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 310" width="100%" height="310">
   <defs>
     <!-- Neon Linear Gradient -->
     <linearGradient id="neon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#58a6ff" />
-      <stop offset="45%" stop-color="#3fb950" />
-      <stop offset="75%" stop-color="#2ea043" />
+      <stop offset="35%" stop-color="#3fb950" />
+      <stop offset="70%" stop-color="#2ea043" />
       <stop offset="100%" stop-color="#bc8cff" />
     </linearGradient>
 
     <!-- Subtle Glow Filter -->
-    <filter id="laser-glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="4" result="blur" />
+    <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
       <feMerge>
         <feMergeNode in="blur" />
         <feMergeNode in="SourceGraphic" />
@@ -22,17 +22,20 @@
     </pattern>
 
     <style>
-      @keyframes dash {
-        from {
-          stroke-dashoffset: 880;
+      @keyframes pulse {
+        0%, 100% {
+          filter: drop-shadow(0 0 6px rgba(88, 166, 255, 0.6));
         }
-        to {
-          stroke-dashoffset: 0;
+        50% {
+          filter: drop-shadow(0 0 14px rgba(63, 185, 80, 0.8));
         }
       }
-      .laser-path {
-        stroke-dasharray: 140 300;
-        animation: dash 3.5s linear infinite;
+      .ascii-art {
+        font-family: Consolas, "Courier New", "Fira Code", monospace;
+        font-size: 13.5px;
+        font-weight: 700;
+        white-space: pre;
+        animation: pulse 4s ease-in-out infinite;
       }
       .title-text {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Fira Code", monospace;
@@ -56,8 +59,8 @@
   </defs>
 
   <!-- Container Surface -->
-  <rect width="850" height="185" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="1.2" />
-  <rect width="850" height="185" rx="12" fill="url(#grid-dots)" opacity="0.7" />
+  <rect width="850" height="310" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="1.2" />
+  <rect width="850" height="310" rx="12" fill="url(#grid-dots)" opacity="0.7" />
 
   <!-- Terminal Window Controls -->
   <circle cx="24" cy="20" r="4.5" fill="#f85149" />
@@ -65,28 +68,30 @@
   <circle cx="52" cy="20" r="4.5" fill="#2ea043" />
   <text x="425" y="24" fill="#6e7681" font-family="monospace" font-size="11" text-anchor="middle">stuckinloop8@math-cs: ~</text>
 
-  <!-- Infinity Lemniscate Loop -->
-  <g filter="url(#laser-glow)">
-    <!-- Base track -->
-    <path d="M 425,64 C 385,25 325,25 325,64 C 325,103 385,103 425,64 C 465,25 525,25 525,64 C 525,103 465,103 425,64 Z"
-          fill="none" stroke="#21262d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
-    
-    <!-- Animated laser beam -->
-    <path class="laser-path" d="M 425,64 C 385,25 325,25 325,64 C 325,103 385,103 425,64 C 465,25 525,25 525,64 C 525,103 465,103 425,64 Z"
-          fill="none" stroke="url(#neon-grad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
-    
-    <!-- Center crossover pulse -->
-    <circle cx="425" cy="64" r="3.2" fill="#58a6ff" />
+  <!-- ASCII Infinity Loop -->
+  <g filter="url(#neon-glow)">
+    <text x="425" y="52" class="ascii-art" text-anchor="middle" fill="url(#neon-grad)" xml:space="preserve">
+      <tspan x="425" dy="0">         .-----.         .-----.        </tspan>
+      <tspan x="425" dy="16">       .'       '.     .'       '.      </tspan>
+      <tspan x="425" dy="16">      /   .---.   \   /   .---.   \     </tspan>
+      <tspan x="425" dy="16">     /   /     \   \ /   /     \   \    </tspan>
+      <tspan x="425" dy="16">    |   |       |   X   |       |   |   </tspan>
+      <tspan x="425" dy="16">    |   |       |  / \  |       |   |   </tspan>
+      <tspan x="425" dy="16">     \   \     /  /   \  \     /   /    </tspan>
+      <tspan x="425" dy="16">      \   '---'  /     \  '---'  /      </tspan>
+      <tspan x="425" dy="16">       '.     .'       '.     .'        </tspan>
+      <tspan x="425" dy="16">         '---'           '---'          </tspan>
+    </text>
   </g>
 
   <!-- Typography -->
-  <text x="425" y="118" class="title-text" font-size="20" text-anchor="middle">STUCKINLOOP8</text>
-  <text x="425" y="142" class="sub-text" font-size="11" text-anchor="middle">
+  <text x="425" y="235" class="title-text" font-size="20" text-anchor="middle">STUCKINLOOP8</text>
+  <text x="425" y="258" class="sub-text" font-size="11" text-anchor="middle">
     COMPUTER SCIENCE &amp; APPLIED MATHEMATICS <tspan fill="#58a6ff">//</tspan> ASPIRING QUANT <tspan fill="#3fb950">//</tspan> UNDERGRAD
   </text>
 
   <!-- Code status badge -->
-  <g transform="translate(325, 154)">
+  <g transform="translate(325, 272)">
     <rect width="200" height="22" rx="11" fill="#161b22" stroke="#30363d" stroke-width="1" />
     <text x="100" y="15" class="code-pill" text-anchor="middle">while (alive) { code(); }</text>
   </g>

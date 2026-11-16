@@ -14,13 +14,12 @@
 
 <br/>
 
-### `> git log --contributions --snake`
-
 <div align="center">
+  <img src="assets/terminal-header.svg" alt="Terminal Window" width="100%" />
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/github-contribution-grid-snake-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="assets/github-contribution-grid-snake.svg">
-    <img alt="GitHub Contribution Grid Snake" src="assets/github-contribution-grid-snake.svg">
+    <img alt="GitHub Contribution Grid Snake" src="assets/github-contribution-grid-snake.svg" width="100%">
   </picture>
 </div>
 

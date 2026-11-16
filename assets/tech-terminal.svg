@@ -44,7 +44,7 @@
   <!-- Terminal Command Prompt -->
   <text x="84" y="22.5" class="t-prompt">
     <tspan fill="#7ee787" font-weight="bold">$</tspan>
-    <tspan fill="#f0f6fc"> neofetch --specs --tech-stack</tspan>
+    <tspan fill="#f0f6fc"> cat stack.json</tspan>
     <tspan class="t-cursor" font-weight="bold"> █</tspan>
   </text>
 

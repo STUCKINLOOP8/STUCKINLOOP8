@@ -26,7 +26,7 @@
 <br/>
 
 <div align="center">
-  <img src="assets/tech-terminal.svg" alt="Tech Stack & System Specs" width="100%" />
+  <img src="assets/tech-stack.svg" alt="Tech Stack & System Specs" width="100%" />
 </div>
 
 <br/>

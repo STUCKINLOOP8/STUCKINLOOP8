@@ -29,11 +29,11 @@
   </text>
 
   <!-- Right Side Status Badge -->
-  <g transform="translate(775, 10)">
-    <rect width="90" height="18" rx="9" fill="#0d1117" stroke="#238636" stroke-width="0.8"/>
-    <circle cx="10" cy="9" r="3" fill="#238636">
-      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+  <g transform="translate(748, 9)">
+    <rect width="116" height="20" rx="10" fill="#0d1117" stroke="#238636" stroke-width="0.8"/>
+    <circle cx="11" cy="10" r="3.5" fill="#3fb950">
+      <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
     </circle>
-    <text x="20" y="13" fill="#7ee787" font-family="ui-monospace, monospace" font-size="10" font-weight="600" letter-spacing="0.5">main: active</text>
+    <text x="21" y="14" fill="#7ee787" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="10" font-weight="600" letter-spacing="0.4">main: active</text>
   </g>
 </svg>

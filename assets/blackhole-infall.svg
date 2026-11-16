@@ -1,0 +1,314 @@
+<svg width="880" height="380" viewBox="0 0 880 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Glowing Radial Gradients -->
+          <radialGradient id="singularityGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#000000" stop-opacity="1"/>
+            <stop offset="60%" stop-color="#000000" stop-opacity="1"/>
+            <stop offset="75%" stop-color="#00d4ff" stop-opacity="0.6"/>
+            <stop offset="90%" stop-color="#7928ca" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+          </radialGradient>
+
+          <radialGradient id="accretionBackGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.4"/>
+            <stop offset="40%" stop-color="#7928ca" stop-opacity="0.25"/>
+            <stop offset="70%" stop-color="#00ff88" stop-opacity="0.1"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+          </radialGradient>
+
+          <!-- Relativistic Doppler Gradient for Accretion Disk -->
+          <linearGradient id="diskGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.85"/>
+            <stop offset="35%" stop-color="#00ff88" stop-opacity="0.7"/>
+            <stop offset="65%" stop-color="#7928ca" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#ff007a" stop-opacity="0.2"/>
+          </linearGradient>
+
+          <!-- Core Shadow Filter -->
+          <filter id="shadowFilter" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0.83   0 0 0 0 1  0 0 0 1 0"/>
+            <feMerge>
+              <feMergeNode/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+
+          <style>
+            @keyframes diskSpin {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(360deg); }
+            }
+            @keyframes diskPulse {
+              0%, 100% { opacity: 0.85; transform: scale(1); }
+              50% { opacity: 0.65; transform: scale(0.97); }
+            }
+            @keyframes haloGlow {
+              0%, 100% { transform: scale(1); opacity: 0.7; }
+              50% { transform: scale(1.05); opacity: 0.95; }
+            }
+
+            /* Infall Spiraling Animation */
+            @keyframes spiral1 {
+              0%   { transform: rotate(0deg) translate(340px, 0px) scale(1); opacity: 0; }
+              10%  { opacity: 1; }
+              40%  { transform: rotate(140deg) translate(240px, 0px) scale(0.9); opacity: 0.95; }
+              70%  { transform: rotate(260deg) translate(140px, 0px) scale(0.75); opacity: 0.85; }
+              90%  { transform: rotate(330deg) translate(65px, 0px) scale(0.5); opacity: 0.6; }
+              98%  { transform: rotate(360deg) translate(30px, 0px) scale(0.2); opacity: 0; }
+              100% { transform: rotate(360deg) translate(30px, 0px) scale(0.1); opacity: 0; }
+            }
+
+            .orbit-disk-bg {
+              animation: diskSpin 25s linear infinite;
+              transform-origin: 440px 190px;
+            }
+            .orbit-disk-fast {
+              animation: diskSpin 14s linear infinite;
+              transform-origin: 440px 190px;
+            }
+            .halo-pulse {
+              animation: haloGlow 4s ease-in-out infinite;
+              transform-origin: 440px 190px;
+            }
+
+            .infall-tag {
+              font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+              font-size: 11px;
+              font-weight: 700;
+              letter-spacing: 0.4px;
+              fill: #ffffff;
+              text-shadow: 0 0 8px rgba(0,212,255,0.8);
+            }
+            .tag-pill {
+              fill: rgba(13, 17, 23, 0.85);
+              stroke-width: 1;
+            }
+
+            /* Individual Skill Infall Timings (16 skills staggered) */
+            .s-1  { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: 0.0s; }
+            .s-2  { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: -1.0s; }
+            .s-3  { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: -2.0s; }
+            .s-4  { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: -3.0s; }
+            .s-5  { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: -4.0s; }
+            .s-6  { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: -5.0s; }
+            .s-7  { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: -6.0s; }
+            .s-8  { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: -7.0s; }
+            .s-9  { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: -8.0s; }
+            .s-10 { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: -9.0s; }
+            .s-11 { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: -10.0s; }
+            .s-12 { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: -11.0s; }
+            .s-13 { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: -12.0s; }
+            .s-14 { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: -13.0s; }
+            .s-15 { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: -14.0s; }
+            .s-16 { animation: spiral1 16s cubic-bezier(0.4, 0, 0.2, 1) infinite; animation-delay: -15.0s; }
+          </style>
+        </defs>
+
+        <!-- Cosmic Deep Space Backdrop -->
+        <rect width="880" height="380" rx="12" fill="#04060a"/>
+
+        <!-- Subtle Distant Stars -->
+        <g opacity="0.4">
+          <circle cx="80" cy="50" r="1" fill="#ffffff"/>
+          <circle cx="210" cy="90" r="1.2" fill="#00d4ff"/>
+          <circle cx="760" cy="70" r="1.5" fill="#ffffff"/>
+          <circle cx="820" cy="280" r="1" fill="#7928ca"/>
+          <circle cx="120" cy="310" r="1.3" fill="#ffffff"/>
+          <circle cx="690" cy="320" r="1" fill="#00ff88"/>
+          <circle cx="440" cy="30" r="1.2" fill="#ffffff"/>
+          <circle cx="340" cy="350" r="1" fill="#00d4ff"/>
+        </g>
+
+        <!-- Ambient Accretion Heat Glow -->
+        <circle cx="440" cy="190" r="320" fill="url(#accretionBackGlow)"/>
+
+        <!-- Relativistic Jet (Polar Beams) -->
+        <g opacity="0.35">
+          <path d="M439 190L425 0H455L441 190Z" fill="url(#accretionBackGlow)"/>
+          <path d="M439 190L425 380H455L441 190Z" fill="url(#accretionBackGlow)"/>
+          <line x1="440" y1="20" x2="440" y2="360" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.6"/>
+        </g>
+
+        <!-- Gravitational Lensing Halo (Over the top, Gargantua style) -->
+        <g class="halo-pulse">
+          <ellipse cx="440" cy="190" rx="100" ry="110" stroke="url(#diskGrad)" stroke-width="3" fill="none" opacity="0.6" filter="url(#shadowFilter)"/>
+          <ellipse cx="440" cy="190" rx="120" ry="130" stroke="#00d4ff" stroke-width="1" stroke-dasharray="12 18" fill="none" opacity="0.4"/>
+        </g>
+
+        <!-- Main Accretion Disk Rings (Projected / Tilted 3D Ellipses) -->
+        <g transform="translate(440, 190) rotate(-12) translate(-440, -190)">
+          <!-- Outer Diffuse Dust Ring -->
+          <ellipse cx="440" cy="190" rx="360" ry="75" stroke="#30363d" stroke-width="1" stroke-dasharray="4 8" fill="none" opacity="0.5"/>
+          <ellipse cx="440" cy="190" rx="300" ry="60" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="8 12" fill="none" opacity="0.35"/>
+          
+          <!-- Mid Glowing Spiral Ring -->
+          <ellipse cx="440" cy="190" rx="220" ry="44" stroke="url(#diskGrad)" stroke-width="2.5" fill="none" opacity="0.75" filter="url(#shadowFilter)"/>
+          
+          <!-- Inner Photon Orbit Ring -->
+          <ellipse cx="440" cy="190" rx="130" ry="26" stroke="#00ff88" stroke-width="3" fill="none" opacity="0.9" filter="url(#shadowFilter)"/>
+          <ellipse cx="440" cy="190" rx="80" ry="16" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.8"/>
+        </g>
+
+        <!-- Swirling Infall Gravitational Layer for Tech Labels -->
+        <g transform="translate(440, 190) scale(1, 0.42) rotate(-12)">
+          
+          <!-- Skill 1: Python -->
+          <g class="s-1">
+            <g transform="translate(0, 0)">
+              <rect x="-35" y="-14" width="70" height="24" rx="12" class="tag-pill" stroke="#00d4ff"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#00d4ff">Python</text>
+            </g>
+          </g>
+
+          <!-- Skill 2: C++ -->
+          <g class="s-2">
+            <g transform="translate(0, 0)">
+              <rect x="-26" y="-14" width="52" height="24" rx="12" class="tag-pill" stroke="#00d4ff"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#00d4ff">C++</text>
+            </g>
+          </g>
+
+          <!-- Skill 3: NumPy & Pandas -->
+          <g class="s-3">
+            <g transform="translate(0, 0)">
+              <rect x="-65" y="-14" width="130" height="24" rx="12" class="tag-pill" stroke="#00ff88"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#00ff88">NumPy &amp; Pandas</text>
+            </g>
+          </g>
+
+          <!-- Skill 4: MATLAB -->
+          <g class="s-4">
+            <g transform="translate(0, 0)">
+              <rect x="-36" y="-14" width="72" height="24" rx="12" class="tag-pill" stroke="#ff7b72"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#ff7b72">MATLAB</text>
+            </g>
+          </g>
+
+          <!-- Skill 5: SQL -->
+          <g class="s-5">
+            <g transform="translate(0, 0)">
+              <rect x="-25" y="-14" width="50" height="24" rx="12" class="tag-pill" stroke="#79c0ff"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#79c0ff">SQL</text>
+            </g>
+          </g>
+
+          <!-- Skill 6: Probability & Stats -->
+          <g class="s-6">
+            <g transform="translate(0, 0)">
+              <rect x="-70" y="-14" width="140" height="24" rx="12" class="tag-pill" stroke="#00ff88"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#00ff88">Probability &amp; Stats</text>
+            </g>
+          </g>
+
+          <!-- Skill 7: Docker -->
+          <g class="s-7">
+            <g transform="translate(0, 0)">
+              <rect x="-32" y="-14" width="64" height="24" rx="12" class="tag-pill" stroke="#bc8cff"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#bc8cff">Docker</text>
+            </g>
+          </g>
+
+          <!-- Skill 8: Linear Algebra -->
+          <g class="s-8">
+            <g transform="translate(0, 0)">
+              <rect x="-55" y="-14" width="110" height="24" rx="12" class="tag-pill" stroke="#00ff88"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#00ff88">Linear Algebra</text>
+            </g>
+          </g>
+
+          <!-- Skill 9: Stochastic Calculus -->
+          <g class="s-9">
+            <g transform="translate(0, 0)">
+              <rect x="-72" y="-14" width="144" height="24" rx="12" class="tag-pill" stroke="#00ff88"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#00ff88">Stochastic Calculus</text>
+            </g>
+          </g>
+
+          <!-- Skill 10: Git & GitHub -->
+          <g class="s-10">
+            <g transform="translate(0, 0)">
+              <rect x="-48" y="-14" width="96" height="24" rx="12" class="tag-pill" stroke="#bc8cff"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#bc8cff">Git &amp; GitHub</text>
+            </g>
+          </g>
+
+          <!-- Skill 11: DSA -->
+          <g class="s-11">
+            <g transform="translate(0, 0)">
+              <rect x="-24" y="-14" width="48" height="24" rx="12" class="tag-pill" stroke="#00ff88"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#00ff88">DSA</text>
+            </g>
+          </g>
+
+          <!-- Skill 12: TypeScript -->
+          <g class="s-12">
+            <g transform="translate(0, 0)">
+              <rect x="-44" y="-14" width="88" height="24" rx="12" class="tag-pill" stroke="#79c0ff"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#79c0ff">TypeScript</text>
+            </g>
+          </g>
+
+          <!-- Skill 13: VS Code -->
+          <g class="s-13">
+            <g transform="translate(0, 0)">
+              <rect x="-35" y="-14" width="70" height="24" rx="12" class="tag-pill" stroke="#bc8cff"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#bc8cff">VS Code</text>
+            </g>
+          </g>
+
+          <!-- Skill 14: C -->
+          <g class="s-14">
+            <g transform="translate(0, 0)">
+              <rect x="-20" y="-14" width="40" height="24" rx="12" class="tag-pill" stroke="#00d4ff"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#00d4ff">C</text>
+            </g>
+          </g>
+
+          <!-- Skill 15: Jupyter -->
+          <g class="s-15">
+            <g transform="translate(0, 0)">
+              <rect x="-36" y="-14" width="72" height="24" rx="12" class="tag-pill" stroke="#bc8cff"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#bc8cff">Jupyter</text>
+            </g>
+          </g>
+
+          <!-- Skill 16: WSL2 -->
+          <g class="s-16">
+            <g transform="translate(0, 0)">
+              <rect x="-30" y="-14" width="60" height="24" rx="12" class="tag-pill" stroke="#bc8cff"/>
+              <text x="0" y="2" text-anchor="middle" class="infall-tag" fill="#bc8cff">WSL2</text>
+            </g>
+          </g>
+
+        </g>
+
+        <!-- Central Black Hole Singularity & Event Horizon (Pure Pitch Black Core) -->
+        <g>
+          <!-- Radiant Photon Ring Glow -->
+          <circle cx="440" cy="190" r="54" fill="url(#singularityGlow)"/>
+          <!-- Event Horizon Stark Shadow Edge -->
+          <circle cx="440" cy="190" r="42" fill="#000000" stroke="#00d4ff" stroke-width="1.8" filter="url(#shadowFilter)"/>
+          <circle cx="440" cy="190" r="39" fill="#000000"/>
+          
+          <!-- Inner Singularity Infinity Glyph -->
+          <path d="M430 190C430 186 433 183 436 183C439 183 441 187 444 193C447 187 449 183 452 183C455 183 458 186 458 190C458 194 455 197 452 197C449 197 447 193 444 187C441 193 439 197 436 197C433 197 430 194 430 190Z" fill="none" stroke="#00d4ff" stroke-width="1.2" opacity="0.6"/>
+        </g>
+
+        <!-- Foreground Lower Accretion Arc (Passing in front of Event Horizon for 3D Depth) -->
+        <g transform="translate(440, 190) rotate(-12) translate(-440, -190)" opacity="0.9">
+          <!-- Foreground arc only (clipped to bottom half) -->
+          <path d="M140 190C140 240 270 280 440 280C610 280 740 240 740 190" stroke="url(#diskGrad)" stroke-width="3.5" fill="none" filter="url(#shadowFilter)"/>
+          <path d="M220 190C220 225 320 250 440 250C560 250 660 225 660 190" stroke="#00d4ff" stroke-width="2" fill="none"/>
+        </g>
+
+        <!-- Bottom Status HUD Banner -->
+        <g transform="translate(24, 345)">
+          <text x="0" y="14" font-family="ui-monospace, monospace" font-size="11" fill="#8b949e">
+            <tspan fill="#00d4ff">&gt; SINGULARITY STATUS:</tspan> 16 CORES ACTIVE • 
+            <tspan fill="#00ff88">INFINITE ACCRETION</tspan> • 
+            <tspan fill="#bc8cff">STUCK IN LOOP 8</tspan>
+          </text>
+        </g>
+
+      </svg>

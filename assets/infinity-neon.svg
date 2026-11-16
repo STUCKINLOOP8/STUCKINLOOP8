@@ -5,96 +5,212 @@
     </pattern>
 
     <style>
-      /* LED Pulse Keyframes */
-      @keyframes tick-pulse {
-        0% {
-          fill: #ffffff;
-          opacity: 1;
-          filter: drop-shadow(0 0 4px #ffffff) drop-shadow(0 0 14px #00ff66) drop-shadow(0 0 26px #00ff66);
-        }
-        4% {
-          fill: #66ff99;
-          opacity: 1;
-          filter: drop-shadow(0 0 4px #00ff66) drop-shadow(0 0 16px #00ff66);
-        }
-        8% {
-          fill: #00ff66;
-          opacity: 1;
-          filter: drop-shadow(0 0 4px #00ff66) drop-shadow(0 0 12px #00ff66);
-        }
-        12% {
-          fill: #00dd55;
-          opacity: 0.9;
-          filter: drop-shadow(0 0 3px #00cc55);
-        }
-        16% {
-          fill: #00bb44;
-          opacity: 0.75;
-          filter: drop-shadow(0 0 2px #009933);
-        }
-        20% {
-          fill: #008833;
-          opacity: 0.55;
-          filter: none;
-        }
-        24% {
-          fill: #005522;
-          opacity: 0.35;
-          filter: none;
-        }
-        28% {
-          fill: #003311;
-          opacity: 0.2;
-          filter: none;
-        }
-        32%, 100% {
-          fill: #00ff66;
-          opacity: 0.07;
-          filter: none;
-        }
+      /* 4-Phase Color Crossfading */
+      @keyframes fade-red {
+        0%, 100% { opacity: 1; }
+        20%, 80% { opacity: 0; }
+      }
+      @keyframes fade-pink {
+        0% { opacity: 0; }
+        25% { opacity: 1; }
+        45% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+      @keyframes fade-green {
+        0%, 25% { opacity: 0; }
+        50% { opacity: 1; }
+        70% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+      @keyframes fade-yellow {
+        0%, 50% { opacity: 0; }
+        75% { opacity: 1; }
+        95% { opacity: 0; }
+        100% { opacity: 0; }
       }
 
+      .layer-red { animation: fade-red 8s infinite ease-in-out; }
+      .layer-pink { animation: fade-pink 8s infinite ease-in-out; }
+      .layer-green { animation: fade-green 8s infinite ease-in-out; }
+      .layer-yellow { animation: fade-yellow 8s infinite ease-in-out; }
+
+      /* Periodic Cyber Glitch */
+      @keyframes glitch-shake {
+        0%, 38%, 42%, 82%, 87%, 92%, 97%, 100% { transform: translate(0, 0); }
+        39% { transform: translate(-2px, 1px); }
+        40% { transform: translate(2px, -1px); }
+        41% { transform: translate(-1px, 0); }
+        83% { transform: translate(-4px, 1px); }
+        84% { transform: translate(3px, -2px); }
+        85% { transform: translate(-3px, 2px); }
+        86% { transform: translate(4px, 0); }
+        88% { transform: translate(-2px, -1px); }
+        89% { transform: translate(3px, 1px); }
+        90% { transform: translate(-4px, 0); }
+        93% { transform: translate(2px, 1px); }
+        94% { transform: translate(-1px, -1px); }
+        95% { transform: translate(3px, 0); }
+      }
+
+      @keyframes glitch-cyan {
+        0%, 38%, 42%, 82%, 97%, 100% { opacity: 0; transform: translate(0, 0); }
+        39% { opacity: 0.6; transform: translate(-3px, 1px); }
+        40% { opacity: 0.4; transform: translate(2px, -1px); }
+        41% { opacity: 0; }
+        83% { opacity: 0.9; transform: translate(-6px, 2px); }
+        84% { opacity: 0.3; transform: translate(4px, -1px); }
+        85% { opacity: 0.85; transform: translate(-5px, -2px); }
+        86% { opacity: 0.2; transform: translate(3px, 1px); }
+        88% { opacity: 0.95; transform: translate(-6px, 1px); }
+        89% { opacity: 0; }
+        90% { opacity: 0.75; transform: translate(-4px, -1px); }
+        93% { opacity: 0.9; transform: translate(5px, 1px); }
+        94% { opacity: 0.3; transform: translate(-3px, 0); }
+        95% { opacity: 0.8; transform: translate(-4px, 1px); }
+        96% { opacity: 0; }
+      }
+
+      @keyframes glitch-magenta {
+        0%, 38%, 42%, 82%, 97%, 100% { opacity: 0; transform: translate(0, 0); }
+        39% { opacity: 0.5; transform: translate(3px, -1px); }
+        40% { opacity: 0.3; transform: translate(-2px, 1px); }
+        41% { opacity: 0; }
+        83% { opacity: 0.85; transform: translate(6px, -2px); }
+        84% { opacity: 0.95; transform: translate(-4px, 1px); }
+        85% { opacity: 0.2; transform: translate(3px, 2px); }
+        86% { opacity: 0.9; transform: translate(5px, -1px); }
+        88% { opacity: 0.1; transform: translate(-3px, 0); }
+        89% { opacity: 0.8; transform: translate(4px, -1px); }
+        90% { opacity: 0; }
+        93% { opacity: 0.85; transform: translate(5px, 2px); }
+        94% { opacity: 0.4; transform: translate(-3px, -1px); }
+        95% { opacity: 0.85; transform: translate(5px, -1px); }
+        96% { opacity: 0; }
+      }
+
+      .glitch-target {
+        animation: glitch-shake 4s infinite ease-in-out;
+      }
+      .ghost-cyan {
+        animation: glitch-cyan 4s infinite ease-in-out;
+      }
+      .ghost-magenta {
+        animation: glitch-magenta 4s infinite ease-in-out;
+      }
+
+      /* Base Tick Styling */
       .tick {
-        fill: #00ff66;
-        opacity: 0.07;
+        animation-duration: 3.6s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
       }
 
-      .tk-0 { animation: tick-pulse 3.6s infinite linear; animation-delay: 0.000s; }
-      .tk-1 { animation: tick-pulse 3.6s infinite linear; animation-delay: 0.100s; }
-      .tk-2 { animation: tick-pulse 3.6s infinite linear; animation-delay: 0.200s; }
-      .tk-3 { animation: tick-pulse 3.6s infinite linear; animation-delay: 0.300s; }
-      .tk-4 { animation: tick-pulse 3.6s infinite linear; animation-delay: 0.400s; }
-      .tk-5 { animation: tick-pulse 3.6s infinite linear; animation-delay: 0.500s; }
-      .tk-6 { animation: tick-pulse 3.6s infinite linear; animation-delay: 0.600s; }
-      .tk-7 { animation: tick-pulse 3.6s infinite linear; animation-delay: 0.700s; }
-      .tk-8 { animation: tick-pulse 3.6s infinite linear; animation-delay: 0.800s; }
-      .tk-9 { animation: tick-pulse 3.6s infinite linear; animation-delay: 0.900s; }
-      .tk-10 { animation: tick-pulse 3.6s infinite linear; animation-delay: 1.000s; }
-      .tk-11 { animation: tick-pulse 3.6s infinite linear; animation-delay: 1.100s; }
-      .tk-12 { animation: tick-pulse 3.6s infinite linear; animation-delay: 1.200s; }
-      .tk-13 { animation: tick-pulse 3.6s infinite linear; animation-delay: 1.300s; }
-      .tk-14 { animation: tick-pulse 3.6s infinite linear; animation-delay: 1.400s; }
-      .tk-15 { animation: tick-pulse 3.6s infinite linear; animation-delay: 1.500s; }
-      .tk-16 { animation: tick-pulse 3.6s infinite linear; animation-delay: 1.600s; }
-      .tk-17 { animation: tick-pulse 3.6s infinite linear; animation-delay: 1.700s; }
-      .tk-18 { animation: tick-pulse 3.6s infinite linear; animation-delay: 1.800s; }
-      .tk-19 { animation: tick-pulse 3.6s infinite linear; animation-delay: 1.900s; }
-      .tk-20 { animation: tick-pulse 3.6s infinite linear; animation-delay: 2.000s; }
-      .tk-21 { animation: tick-pulse 3.6s infinite linear; animation-delay: 2.100s; }
-      .tk-22 { animation: tick-pulse 3.6s infinite linear; animation-delay: 2.200s; }
-      .tk-23 { animation: tick-pulse 3.6s infinite linear; animation-delay: 2.300s; }
-      .tk-24 { animation: tick-pulse 3.6s infinite linear; animation-delay: 2.400s; }
-      .tk-25 { animation: tick-pulse 3.6s infinite linear; animation-delay: 2.500s; }
-      .tk-26 { animation: tick-pulse 3.6s infinite linear; animation-delay: 2.600s; }
-      .tk-27 { animation: tick-pulse 3.6s infinite linear; animation-delay: 2.700s; }
-      .tk-28 { animation: tick-pulse 3.6s infinite linear; animation-delay: 2.800s; }
-      .tk-29 { animation: tick-pulse 3.6s infinite linear; animation-delay: 2.900s; }
-      .tk-30 { animation: tick-pulse 3.6s infinite linear; animation-delay: 3.000s; }
-      .tk-31 { animation: tick-pulse 3.6s infinite linear; animation-delay: 3.100s; }
-      .tk-32 { animation: tick-pulse 3.6s infinite linear; animation-delay: 3.200s; }
-      .tk-33 { animation: tick-pulse 3.6s infinite linear; animation-delay: 3.300s; }
-      .tk-34 { animation: tick-pulse 3.6s infinite linear; animation-delay: 3.400s; }
-      .tk-35 { animation: tick-pulse 3.6s infinite linear; animation-delay: 3.500s; }
+      /* Delays for each waypoint */
+      .tk-0 { animation-delay: 0.000s; }
+      .tk-1 { animation-delay: 0.100s; }
+      .tk-2 { animation-delay: 0.200s; }
+      .tk-3 { animation-delay: 0.300s; }
+      .tk-4 { animation-delay: 0.400s; }
+      .tk-5 { animation-delay: 0.500s; }
+      .tk-6 { animation-delay: 0.600s; }
+      .tk-7 { animation-delay: 0.700s; }
+      .tk-8 { animation-delay: 0.800s; }
+      .tk-9 { animation-delay: 0.900s; }
+      .tk-10 { animation-delay: 1.000s; }
+      .tk-11 { animation-delay: 1.100s; }
+      .tk-12 { animation-delay: 1.200s; }
+      .tk-13 { animation-delay: 1.300s; }
+      .tk-14 { animation-delay: 1.400s; }
+      .tk-15 { animation-delay: 1.500s; }
+      .tk-16 { animation-delay: 1.600s; }
+      .tk-17 { animation-delay: 1.700s; }
+      .tk-18 { animation-delay: 1.800s; }
+      .tk-19 { animation-delay: 1.900s; }
+      .tk-20 { animation-delay: 2.000s; }
+      .tk-21 { animation-delay: 2.100s; }
+      .tk-22 { animation-delay: 2.200s; }
+      .tk-23 { animation-delay: 2.300s; }
+      .tk-24 { animation-delay: 2.400s; }
+      .tk-25 { animation-delay: 2.500s; }
+      .tk-26 { animation-delay: 2.600s; }
+      .tk-27 { animation-delay: 2.700s; }
+      .tk-28 { animation-delay: 2.800s; }
+      .tk-29 { animation-delay: 2.900s; }
+      .tk-30 { animation-delay: 3.000s; }
+      .tk-31 { animation-delay: 3.100s; }
+      .tk-32 { animation-delay: 3.200s; }
+      .tk-33 { animation-delay: 3.300s; }
+      .tk-34 { animation-delay: 3.400s; }
+      .tk-35 { animation-delay: 3.500s; }
+
+      /* 1. Cyber Red Pulse */
+      @keyframes pulse-red {
+        0% { fill: #ffffff; opacity: 1; filter: drop-shadow(0 0 4px #ffffff) drop-shadow(0 0 14px #ff0055) drop-shadow(0 0 26px #ff0055); }
+        4% { fill: #ff7597; opacity: 1; filter: drop-shadow(0 0 4px #ff2a5f) drop-shadow(0 0 16px #ff0055); }
+        8% { fill: #ff2a5f; opacity: 1; filter: drop-shadow(0 0 4px #ff2a5f) drop-shadow(0 0 12px #ff0055); }
+        12% { fill: #dd1e4b; opacity: 0.9; filter: drop-shadow(0 0 3px #dd1e4b); }
+        16% { fill: #bb143c; opacity: 0.75; filter: drop-shadow(0 0 2px #bb143c); }
+        20% { fill: #880e2b; opacity: 0.55; filter: none; }
+        24% { fill: #55091b; opacity: 0.35; filter: none; }
+        28% { fill: #330510; opacity: 0.2; filter: none; }
+        32%, 100% { fill: #ff2a5f; opacity: 0.07; filter: none; }
+      }
+      .layer-red .tick { animation-name: pulse-red; fill: #ff2a5f; opacity: 0.07; }
+
+      /* 2. Neon Pink Pulse */
+      @keyframes pulse-pink {
+        0% { fill: #ffffff; opacity: 1; filter: drop-shadow(0 0 4px #ffffff) drop-shadow(0 0 14px #ff00bb) drop-shadow(0 0 26px #ff00bb); }
+        4% { fill: #ff69b4; opacity: 1; filter: drop-shadow(0 0 4px #ff1493) drop-shadow(0 0 16px #ff00bb); }
+        8% { fill: #ff1493; opacity: 1; filter: drop-shadow(0 0 4px #ff1493) drop-shadow(0 0 12px #ff00bb); }
+        12% { fill: #d60e79; opacity: 0.9; filter: drop-shadow(0 0 3px #d60e79); }
+        16% { fill: #b30b65; opacity: 0.75; filter: drop-shadow(0 0 2px #b30b65); }
+        20% { fill: #800848; opacity: 0.55; filter: none; }
+        24% { fill: #50052d; opacity: 0.35; filter: none; }
+        28% { fill: #30031b; opacity: 0.2; filter: none; }
+        32%, 100% { fill: #ff1493; opacity: 0.07; filter: none; }
+      }
+      .layer-pink .tick { animation-name: pulse-pink; fill: #ff1493; opacity: 0.07; }
+
+      /* 3. Matrix Green Pulse */
+      @keyframes pulse-green {
+        0% { fill: #ffffff; opacity: 1; filter: drop-shadow(0 0 4px #ffffff) drop-shadow(0 0 14px #00ff66) drop-shadow(0 0 26px #00ff66); }
+        4% { fill: #66ff99; opacity: 1; filter: drop-shadow(0 0 4px #00ff66) drop-shadow(0 0 16px #00ff66); }
+        8% { fill: #00ff66; opacity: 1; filter: drop-shadow(0 0 4px #00ff66) drop-shadow(0 0 12px #00ff66); }
+        12% { fill: #00dd55; opacity: 0.9; filter: drop-shadow(0 0 3px #00cc55); }
+        16% { fill: #00bb44; opacity: 0.75; filter: drop-shadow(0 0 2px #009933); }
+        20% { fill: #008833; opacity: 0.55; filter: none; }
+        24% { fill: #005522; opacity: 0.35; filter: none; }
+        28% { fill: #003311; opacity: 0.2; filter: none; }
+        32%, 100% { fill: #00ff66; opacity: 0.07; filter: none; }
+      }
+      .layer-green .tick { animation-name: pulse-green; fill: #00ff66; opacity: 0.07; }
+
+      /* 4. Cyber Yellow Pulse */
+      @keyframes pulse-yellow {
+        0% { fill: #ffffff; opacity: 1; filter: drop-shadow(0 0 4px #ffffff) drop-shadow(0 0 14px #ffe600) drop-shadow(0 0 26px #ffe600); }
+        4% { fill: #fff066; opacity: 1; filter: drop-shadow(0 0 4px #ffe600) drop-shadow(0 0 16px #ffe600); }
+        8% { fill: #ffe600; opacity: 1; filter: drop-shadow(0 0 4px #ffe600) drop-shadow(0 0 12px #ffe600); }
+        12% { fill: #ddc700; opacity: 0.9; filter: drop-shadow(0 0 3px #ddc700); }
+        16% { fill: #bba800; opacity: 0.75; filter: drop-shadow(0 0 2px #bba800); }
+        20% { fill: #887a00; opacity: 0.55; filter: none; }
+        24% { fill: #554d00; opacity: 0.35; filter: none; }
+        28% { fill: #332e00; opacity: 0.2; filter: none; }
+        32%, 100% { fill: #ffe600; opacity: 0.07; filter: none; }
+      }
+      .layer-yellow .tick { animation-name: pulse-yellow; fill: #ffe600; opacity: 0.07; }
+
+      /* Ghosts */
+      @keyframes pulse-cyan {
+        0%, 15% { fill: #00f0ff; opacity: 1; filter: drop-shadow(0 0 6px #00f0ff) drop-shadow(0 0 14px #00f0ff); }
+        30%, 100% { fill: #00f0ff; opacity: 0.05; filter: none; }
+      }
+      .ghost-cyan .tick { animation-name: pulse-cyan; fill: #00f0ff; }
+
+      @keyframes pulse-magenta {
+        0%, 15% { fill: #ff007f; opacity: 1; filter: drop-shadow(0 0 6px #ff007f) drop-shadow(0 0 14px #ff007f); }
+        30%, 100% { fill: #ff007f; opacity: 0.05; filter: none; }
+      }
+      .ghost-magenta .tick { animation-name: pulse-magenta; fill: #ff007f; }
 
       .title-text {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Fira Code", monospace;
@@ -124,51 +240,276 @@
   <rect width="850" height="280" rx="14" fill="#0d1117" stroke="#30363d" stroke-width="1.2" />
   <rect width="850" height="280" rx="14" fill="url(#grid-dots)" opacity="0.6" />
 
-  <!-- Status Pill -->
+  <!-- Base Code Pill Background -->
   <g transform="translate(325, 244)">
     <rect width="200" height="22" rx="11" fill="#161b22" />
-    <rect width="200" height="22" rx="11" fill="none" stroke="#00ff66" stroke-width="1.2" opacity="0.8" />
-    <text x="100" y="15" fill="#00ff66" class="code-pill-font" text-anchor="middle" filter="drop-shadow(0 0 4px #00ff66)">while (alive) { code(); }</text>
   </g>
 
-  <!-- LED Ticks Group -->
-  <g id="led-ticks">
-    <rect x="421.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-0" />
-    <rect x="443.4" y="80.0" width="7.5" height="19" rx="2.5" class="tick tk-1" />
-    <rect x="465.9" y="65.1" width="7.5" height="19" rx="2.5" class="tick tk-2" />
-    <rect x="489.1" y="51.2" width="7.5" height="19" rx="2.5" class="tick tk-3" />
-    <rect x="513.4" y="39.4" width="7.5" height="19" rx="2.5" class="tick tk-4" />
-    <rect x="539.1" y="31.7" width="7.5" height="19" rx="2.5" class="tick tk-5" />
-    <rect x="566.0" y="32.1" width="7.5" height="19" rx="2.5" class="tick tk-6" />
-    <rect x="588.9" y="45.7" width="7.5" height="19" rx="2.5" class="tick tk-7" />
-    <rect x="602.1" y="68.9" width="7.5" height="19" rx="2.5" class="tick tk-8" />
-    <rect x="606.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-9" />
-    <rect x="602.1" y="122.1" width="7.5" height="19" rx="2.5" class="tick tk-10" />
-    <rect x="588.9" y="145.3" width="7.5" height="19" rx="2.5" class="tick tk-11" />
-    <rect x="566.0" y="158.9" width="7.5" height="19" rx="2.5" class="tick tk-12" />
-    <rect x="539.1" y="159.3" width="7.5" height="19" rx="2.5" class="tick tk-13" />
-    <rect x="513.4" y="151.6" width="7.5" height="19" rx="2.5" class="tick tk-14" />
-    <rect x="489.1" y="139.8" width="7.5" height="19" rx="2.5" class="tick tk-15" />
-    <rect x="465.9" y="125.9" width="7.5" height="19" rx="2.5" class="tick tk-16" />
-    <rect x="443.4" y="111.0" width="7.5" height="19" rx="2.5" class="tick tk-17" />
-    <rect x="421.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-18" />
-    <rect x="399.1" y="80.0" width="7.5" height="19" rx="2.5" class="tick tk-19" />
-    <rect x="376.6" y="65.1" width="7.5" height="19" rx="2.5" class="tick tk-20" />
-    <rect x="353.4" y="51.2" width="7.5" height="19" rx="2.5" class="tick tk-21" />
-    <rect x="329.1" y="39.4" width="7.5" height="19" rx="2.5" class="tick tk-22" />
-    <rect x="303.4" y="31.7" width="7.5" height="19" rx="2.5" class="tick tk-23" />
-    <rect x="276.6" y="32.1" width="7.5" height="19" rx="2.5" class="tick tk-24" />
-    <rect x="253.6" y="45.7" width="7.5" height="19" rx="2.5" class="tick tk-25" />
-    <rect x="240.3" y="68.9" width="7.5" height="19" rx="2.5" class="tick tk-26" />
-    <rect x="236.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-27" />
-    <rect x="240.3" y="122.1" width="7.5" height="19" rx="2.5" class="tick tk-28" />
-    <rect x="253.6" y="145.3" width="7.5" height="19" rx="2.5" class="tick tk-29" />
-    <rect x="276.6" y="158.9" width="7.5" height="19" rx="2.5" class="tick tk-30" />
-    <rect x="303.4" y="159.3" width="7.5" height="19" rx="2.5" class="tick tk-31" />
-    <rect x="329.1" y="151.6" width="7.5" height="19" rx="2.5" class="tick tk-32" />
-    <rect x="353.4" y="139.8" width="7.5" height="19" rx="2.5" class="tick tk-33" />
-    <rect x="376.6" y="125.9" width="7.5" height="19" rx="2.5" class="tick tk-34" />
-    <rect x="399.1" y="111.0" width="7.5" height="19" rx="2.5" class="tick tk-35" />
+  <!-- Glitch Target Group -->
+  <g class="glitch-target">
+    <!-- Cyan Chromatic Ghost -->
+    <g class="ghost-cyan">
+      <rect x="421.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-0" />
+      <rect x="443.4" y="80.0" width="7.5" height="19" rx="2.5" class="tick tk-1" />
+      <rect x="465.9" y="65.1" width="7.5" height="19" rx="2.5" class="tick tk-2" />
+      <rect x="489.1" y="51.2" width="7.5" height="19" rx="2.5" class="tick tk-3" />
+      <rect x="513.4" y="39.4" width="7.5" height="19" rx="2.5" class="tick tk-4" />
+      <rect x="539.1" y="31.7" width="7.5" height="19" rx="2.5" class="tick tk-5" />
+      <rect x="566.0" y="32.1" width="7.5" height="19" rx="2.5" class="tick tk-6" />
+      <rect x="588.9" y="45.7" width="7.5" height="19" rx="2.5" class="tick tk-7" />
+      <rect x="602.1" y="68.9" width="7.5" height="19" rx="2.5" class="tick tk-8" />
+      <rect x="606.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-9" />
+      <rect x="602.1" y="122.1" width="7.5" height="19" rx="2.5" class="tick tk-10" />
+      <rect x="588.9" y="145.3" width="7.5" height="19" rx="2.5" class="tick tk-11" />
+      <rect x="566.0" y="158.9" width="7.5" height="19" rx="2.5" class="tick tk-12" />
+      <rect x="539.1" y="159.3" width="7.5" height="19" rx="2.5" class="tick tk-13" />
+      <rect x="513.4" y="151.6" width="7.5" height="19" rx="2.5" class="tick tk-14" />
+      <rect x="489.1" y="139.8" width="7.5" height="19" rx="2.5" class="tick tk-15" />
+      <rect x="465.9" y="125.9" width="7.5" height="19" rx="2.5" class="tick tk-16" />
+      <rect x="443.4" y="111.0" width="7.5" height="19" rx="2.5" class="tick tk-17" />
+      <rect x="421.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-18" />
+      <rect x="399.1" y="80.0" width="7.5" height="19" rx="2.5" class="tick tk-19" />
+      <rect x="376.6" y="65.1" width="7.5" height="19" rx="2.5" class="tick tk-20" />
+      <rect x="353.4" y="51.2" width="7.5" height="19" rx="2.5" class="tick tk-21" />
+      <rect x="329.1" y="39.4" width="7.5" height="19" rx="2.5" class="tick tk-22" />
+      <rect x="303.4" y="31.7" width="7.5" height="19" rx="2.5" class="tick tk-23" />
+      <rect x="276.6" y="32.1" width="7.5" height="19" rx="2.5" class="tick tk-24" />
+      <rect x="253.6" y="45.7" width="7.5" height="19" rx="2.5" class="tick tk-25" />
+      <rect x="240.3" y="68.9" width="7.5" height="19" rx="2.5" class="tick tk-26" />
+      <rect x="236.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-27" />
+      <rect x="240.3" y="122.1" width="7.5" height="19" rx="2.5" class="tick tk-28" />
+      <rect x="253.6" y="145.3" width="7.5" height="19" rx="2.5" class="tick tk-29" />
+      <rect x="276.6" y="158.9" width="7.5" height="19" rx="2.5" class="tick tk-30" />
+      <rect x="303.4" y="159.3" width="7.5" height="19" rx="2.5" class="tick tk-31" />
+      <rect x="329.1" y="151.6" width="7.5" height="19" rx="2.5" class="tick tk-32" />
+      <rect x="353.4" y="139.8" width="7.5" height="19" rx="2.5" class="tick tk-33" />
+      <rect x="376.6" y="125.9" width="7.5" height="19" rx="2.5" class="tick tk-34" />
+      <rect x="399.1" y="111.0" width="7.5" height="19" rx="2.5" class="tick tk-35" />
+      <g transform="translate(325, 244)">
+        <rect width="200" height="22" rx="11" fill="none" stroke="#00f0ff" stroke-width="1.2" />
+        <text x="100" y="15" fill="#00f0ff" class="code-pill-font" text-anchor="middle">while (alive) { code(); }</text>
+      </g>
+    </g>
+
+    <!-- Magenta Chromatic Ghost -->
+    <g class="ghost-magenta">
+      <rect x="421.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-0" />
+      <rect x="443.4" y="80.0" width="7.5" height="19" rx="2.5" class="tick tk-1" />
+      <rect x="465.9" y="65.1" width="7.5" height="19" rx="2.5" class="tick tk-2" />
+      <rect x="489.1" y="51.2" width="7.5" height="19" rx="2.5" class="tick tk-3" />
+      <rect x="513.4" y="39.4" width="7.5" height="19" rx="2.5" class="tick tk-4" />
+      <rect x="539.1" y="31.7" width="7.5" height="19" rx="2.5" class="tick tk-5" />
+      <rect x="566.0" y="32.1" width="7.5" height="19" rx="2.5" class="tick tk-6" />
+      <rect x="588.9" y="45.7" width="7.5" height="19" rx="2.5" class="tick tk-7" />
+      <rect x="602.1" y="68.9" width="7.5" height="19" rx="2.5" class="tick tk-8" />
+      <rect x="606.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-9" />
+      <rect x="602.1" y="122.1" width="7.5" height="19" rx="2.5" class="tick tk-10" />
+      <rect x="588.9" y="145.3" width="7.5" height="19" rx="2.5" class="tick tk-11" />
+      <rect x="566.0" y="158.9" width="7.5" height="19" rx="2.5" class="tick tk-12" />
+      <rect x="539.1" y="159.3" width="7.5" height="19" rx="2.5" class="tick tk-13" />
+      <rect x="513.4" y="151.6" width="7.5" height="19" rx="2.5" class="tick tk-14" />
+      <rect x="489.1" y="139.8" width="7.5" height="19" rx="2.5" class="tick tk-15" />
+      <rect x="465.9" y="125.9" width="7.5" height="19" rx="2.5" class="tick tk-16" />
+      <rect x="443.4" y="111.0" width="7.5" height="19" rx="2.5" class="tick tk-17" />
+      <rect x="421.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-18" />
+      <rect x="399.1" y="80.0" width="7.5" height="19" rx="2.5" class="tick tk-19" />
+      <rect x="376.6" y="65.1" width="7.5" height="19" rx="2.5" class="tick tk-20" />
+      <rect x="353.4" y="51.2" width="7.5" height="19" rx="2.5" class="tick tk-21" />
+      <rect x="329.1" y="39.4" width="7.5" height="19" rx="2.5" class="tick tk-22" />
+      <rect x="303.4" y="31.7" width="7.5" height="19" rx="2.5" class="tick tk-23" />
+      <rect x="276.6" y="32.1" width="7.5" height="19" rx="2.5" class="tick tk-24" />
+      <rect x="253.6" y="45.7" width="7.5" height="19" rx="2.5" class="tick tk-25" />
+      <rect x="240.3" y="68.9" width="7.5" height="19" rx="2.5" class="tick tk-26" />
+      <rect x="236.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-27" />
+      <rect x="240.3" y="122.1" width="7.5" height="19" rx="2.5" class="tick tk-28" />
+      <rect x="253.6" y="145.3" width="7.5" height="19" rx="2.5" class="tick tk-29" />
+      <rect x="276.6" y="158.9" width="7.5" height="19" rx="2.5" class="tick tk-30" />
+      <rect x="303.4" y="159.3" width="7.5" height="19" rx="2.5" class="tick tk-31" />
+      <rect x="329.1" y="151.6" width="7.5" height="19" rx="2.5" class="tick tk-32" />
+      <rect x="353.4" y="139.8" width="7.5" height="19" rx="2.5" class="tick tk-33" />
+      <rect x="376.6" y="125.9" width="7.5" height="19" rx="2.5" class="tick tk-34" />
+      <rect x="399.1" y="111.0" width="7.5" height="19" rx="2.5" class="tick tk-35" />
+      <g transform="translate(325, 244)">
+        <rect width="200" height="22" rx="11" fill="none" stroke="#ff007f" stroke-width="1.2" />
+        <text x="100" y="15" fill="#ff007f" class="code-pill-font" text-anchor="middle">while (alive) { code(); }</text>
+      </g>
+    </g>
+
+    <!-- 1. Layer Red -->
+    <g class="layer-red">
+      <rect x="421.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-0" />
+      <rect x="443.4" y="80.0" width="7.5" height="19" rx="2.5" class="tick tk-1" />
+      <rect x="465.9" y="65.1" width="7.5" height="19" rx="2.5" class="tick tk-2" />
+      <rect x="489.1" y="51.2" width="7.5" height="19" rx="2.5" class="tick tk-3" />
+      <rect x="513.4" y="39.4" width="7.5" height="19" rx="2.5" class="tick tk-4" />
+      <rect x="539.1" y="31.7" width="7.5" height="19" rx="2.5" class="tick tk-5" />
+      <rect x="566.0" y="32.1" width="7.5" height="19" rx="2.5" class="tick tk-6" />
+      <rect x="588.9" y="45.7" width="7.5" height="19" rx="2.5" class="tick tk-7" />
+      <rect x="602.1" y="68.9" width="7.5" height="19" rx="2.5" class="tick tk-8" />
+      <rect x="606.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-9" />
+      <rect x="602.1" y="122.1" width="7.5" height="19" rx="2.5" class="tick tk-10" />
+      <rect x="588.9" y="145.3" width="7.5" height="19" rx="2.5" class="tick tk-11" />
+      <rect x="566.0" y="158.9" width="7.5" height="19" rx="2.5" class="tick tk-12" />
+      <rect x="539.1" y="159.3" width="7.5" height="19" rx="2.5" class="tick tk-13" />
+      <rect x="513.4" y="151.6" width="7.5" height="19" rx="2.5" class="tick tk-14" />
+      <rect x="489.1" y="139.8" width="7.5" height="19" rx="2.5" class="tick tk-15" />
+      <rect x="465.9" y="125.9" width="7.5" height="19" rx="2.5" class="tick tk-16" />
+      <rect x="443.4" y="111.0" width="7.5" height="19" rx="2.5" class="tick tk-17" />
+      <rect x="421.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-18" />
+      <rect x="399.1" y="80.0" width="7.5" height="19" rx="2.5" class="tick tk-19" />
+      <rect x="376.6" y="65.1" width="7.5" height="19" rx="2.5" class="tick tk-20" />
+      <rect x="353.4" y="51.2" width="7.5" height="19" rx="2.5" class="tick tk-21" />
+      <rect x="329.1" y="39.4" width="7.5" height="19" rx="2.5" class="tick tk-22" />
+      <rect x="303.4" y="31.7" width="7.5" height="19" rx="2.5" class="tick tk-23" />
+      <rect x="276.6" y="32.1" width="7.5" height="19" rx="2.5" class="tick tk-24" />
+      <rect x="253.6" y="45.7" width="7.5" height="19" rx="2.5" class="tick tk-25" />
+      <rect x="240.3" y="68.9" width="7.5" height="19" rx="2.5" class="tick tk-26" />
+      <rect x="236.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-27" />
+      <rect x="240.3" y="122.1" width="7.5" height="19" rx="2.5" class="tick tk-28" />
+      <rect x="253.6" y="145.3" width="7.5" height="19" rx="2.5" class="tick tk-29" />
+      <rect x="276.6" y="158.9" width="7.5" height="19" rx="2.5" class="tick tk-30" />
+      <rect x="303.4" y="159.3" width="7.5" height="19" rx="2.5" class="tick tk-31" />
+      <rect x="329.1" y="151.6" width="7.5" height="19" rx="2.5" class="tick tk-32" />
+      <rect x="353.4" y="139.8" width="7.5" height="19" rx="2.5" class="tick tk-33" />
+      <rect x="376.6" y="125.9" width="7.5" height="19" rx="2.5" class="tick tk-34" />
+      <rect x="399.1" y="111.0" width="7.5" height="19" rx="2.5" class="tick tk-35" />
+      <g transform="translate(325, 244)">
+        <rect width="200" height="22" rx="11" fill="none" stroke="#ff2a5f" stroke-width="1.2" />
+        <text x="100" y="15" fill="#ff2a5f" class="code-pill-font" text-anchor="middle" filter="drop-shadow(0 0 4px #ff2a5f)">while (alive) { code(); }</text>
+      </g>
+    </g>
+
+    <!-- 2. Layer Pink -->
+    <g class="layer-pink">
+      <rect x="421.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-0" />
+      <rect x="443.4" y="80.0" width="7.5" height="19" rx="2.5" class="tick tk-1" />
+      <rect x="465.9" y="65.1" width="7.5" height="19" rx="2.5" class="tick tk-2" />
+      <rect x="489.1" y="51.2" width="7.5" height="19" rx="2.5" class="tick tk-3" />
+      <rect x="513.4" y="39.4" width="7.5" height="19" rx="2.5" class="tick tk-4" />
+      <rect x="539.1" y="31.7" width="7.5" height="19" rx="2.5" class="tick tk-5" />
+      <rect x="566.0" y="32.1" width="7.5" height="19" rx="2.5" class="tick tk-6" />
+      <rect x="588.9" y="45.7" width="7.5" height="19" rx="2.5" class="tick tk-7" />
+      <rect x="602.1" y="68.9" width="7.5" height="19" rx="2.5" class="tick tk-8" />
+      <rect x="606.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-9" />
+      <rect x="602.1" y="122.1" width="7.5" height="19" rx="2.5" class="tick tk-10" />
+      <rect x="588.9" y="145.3" width="7.5" height="19" rx="2.5" class="tick tk-11" />
+      <rect x="566.0" y="158.9" width="7.5" height="19" rx="2.5" class="tick tk-12" />
+      <rect x="539.1" y="159.3" width="7.5" height="19" rx="2.5" class="tick tk-13" />
+      <rect x="513.4" y="151.6" width="7.5" height="19" rx="2.5" class="tick tk-14" />
+      <rect x="489.1" y="139.8" width="7.5" height="19" rx="2.5" class="tick tk-15" />
+      <rect x="465.9" y="125.9" width="7.5" height="19" rx="2.5" class="tick tk-16" />
+      <rect x="443.4" y="111.0" width="7.5" height="19" rx="2.5" class="tick tk-17" />
+      <rect x="421.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-18" />
+      <rect x="399.1" y="80.0" width="7.5" height="19" rx="2.5" class="tick tk-19" />
+      <rect x="376.6" y="65.1" width="7.5" height="19" rx="2.5" class="tick tk-20" />
+      <rect x="353.4" y="51.2" width="7.5" height="19" rx="2.5" class="tick tk-21" />
+      <rect x="329.1" y="39.4" width="7.5" height="19" rx="2.5" class="tick tk-22" />
+      <rect x="303.4" y="31.7" width="7.5" height="19" rx="2.5" class="tick tk-23" />
+      <rect x="276.6" y="32.1" width="7.5" height="19" rx="2.5" class="tick tk-24" />
+      <rect x="253.6" y="45.7" width="7.5" height="19" rx="2.5" class="tick tk-25" />
+      <rect x="240.3" y="68.9" width="7.5" height="19" rx="2.5" class="tick tk-26" />
+      <rect x="236.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-27" />
+      <rect x="240.3" y="122.1" width="7.5" height="19" rx="2.5" class="tick tk-28" />
+      <rect x="253.6" y="145.3" width="7.5" height="19" rx="2.5" class="tick tk-29" />
+      <rect x="276.6" y="158.9" width="7.5" height="19" rx="2.5" class="tick tk-30" />
+      <rect x="303.4" y="159.3" width="7.5" height="19" rx="2.5" class="tick tk-31" />
+      <rect x="329.1" y="151.6" width="7.5" height="19" rx="2.5" class="tick tk-32" />
+      <rect x="353.4" y="139.8" width="7.5" height="19" rx="2.5" class="tick tk-33" />
+      <rect x="376.6" y="125.9" width="7.5" height="19" rx="2.5" class="tick tk-34" />
+      <rect x="399.1" y="111.0" width="7.5" height="19" rx="2.5" class="tick tk-35" />
+      <g transform="translate(325, 244)">
+        <rect width="200" height="22" rx="11" fill="none" stroke="#ff1493" stroke-width="1.2" />
+        <text x="100" y="15" fill="#ff1493" class="code-pill-font" text-anchor="middle" filter="drop-shadow(0 0 4px #ff1493)">while (alive) { code(); }</text>
+      </g>
+    </g>
+
+    <!-- 3. Layer Green -->
+    <g class="layer-green">
+      <rect x="421.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-0" />
+      <rect x="443.4" y="80.0" width="7.5" height="19" rx="2.5" class="tick tk-1" />
+      <rect x="465.9" y="65.1" width="7.5" height="19" rx="2.5" class="tick tk-2" />
+      <rect x="489.1" y="51.2" width="7.5" height="19" rx="2.5" class="tick tk-3" />
+      <rect x="513.4" y="39.4" width="7.5" height="19" rx="2.5" class="tick tk-4" />
+      <rect x="539.1" y="31.7" width="7.5" height="19" rx="2.5" class="tick tk-5" />
+      <rect x="566.0" y="32.1" width="7.5" height="19" rx="2.5" class="tick tk-6" />
+      <rect x="588.9" y="45.7" width="7.5" height="19" rx="2.5" class="tick tk-7" />
+      <rect x="602.1" y="68.9" width="7.5" height="19" rx="2.5" class="tick tk-8" />
+      <rect x="606.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-9" />
+      <rect x="602.1" y="122.1" width="7.5" height="19" rx="2.5" class="tick tk-10" />
+      <rect x="588.9" y="145.3" width="7.5" height="19" rx="2.5" class="tick tk-11" />
+      <rect x="566.0" y="158.9" width="7.5" height="19" rx="2.5" class="tick tk-12" />
+      <rect x="539.1" y="159.3" width="7.5" height="19" rx="2.5" class="tick tk-13" />
+      <rect x="513.4" y="151.6" width="7.5" height="19" rx="2.5" class="tick tk-14" />
+      <rect x="489.1" y="139.8" width="7.5" height="19" rx="2.5" class="tick tk-15" />
+      <rect x="465.9" y="125.9" width="7.5" height="19" rx="2.5" class="tick tk-16" />
+      <rect x="443.4" y="111.0" width="7.5" height="19" rx="2.5" class="tick tk-17" />
+      <rect x="421.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-18" />
+      <rect x="399.1" y="80.0" width="7.5" height="19" rx="2.5" class="tick tk-19" />
+      <rect x="376.6" y="65.1" width="7.5" height="19" rx="2.5" class="tick tk-20" />
+      <rect x="353.4" y="51.2" width="7.5" height="19" rx="2.5" class="tick tk-21" />
+      <rect x="329.1" y="39.4" width="7.5" height="19" rx="2.5" class="tick tk-22" />
+      <rect x="303.4" y="31.7" width="7.5" height="19" rx="2.5" class="tick tk-23" />
+      <rect x="276.6" y="32.1" width="7.5" height="19" rx="2.5" class="tick tk-24" />
+      <rect x="253.6" y="45.7" width="7.5" height="19" rx="2.5" class="tick tk-25" />
+      <rect x="240.3" y="68.9" width="7.5" height="19" rx="2.5" class="tick tk-26" />
+      <rect x="236.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-27" />
+      <rect x="240.3" y="122.1" width="7.5" height="19" rx="2.5" class="tick tk-28" />
+      <rect x="253.6" y="145.3" width="7.5" height="19" rx="2.5" class="tick tk-29" />
+      <rect x="276.6" y="158.9" width="7.5" height="19" rx="2.5" class="tick tk-30" />
+      <rect x="303.4" y="159.3" width="7.5" height="19" rx="2.5" class="tick tk-31" />
+      <rect x="329.1" y="151.6" width="7.5" height="19" rx="2.5" class="tick tk-32" />
+      <rect x="353.4" y="139.8" width="7.5" height="19" rx="2.5" class="tick tk-33" />
+      <rect x="376.6" y="125.9" width="7.5" height="19" rx="2.5" class="tick tk-34" />
+      <rect x="399.1" y="111.0" width="7.5" height="19" rx="2.5" class="tick tk-35" />
+      <g transform="translate(325, 244)">
+        <rect width="200" height="22" rx="11" fill="none" stroke="#00ff66" stroke-width="1.2" />
+        <text x="100" y="15" fill="#00ff66" class="code-pill-font" text-anchor="middle" filter="drop-shadow(0 0 4px #00ff66)">while (alive) { code(); }</text>
+      </g>
+    </g>
+
+    <!-- 4. Layer Yellow -->
+    <g class="layer-yellow">
+      <rect x="421.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-0" />
+      <rect x="443.4" y="80.0" width="7.5" height="19" rx="2.5" class="tick tk-1" />
+      <rect x="465.9" y="65.1" width="7.5" height="19" rx="2.5" class="tick tk-2" />
+      <rect x="489.1" y="51.2" width="7.5" height="19" rx="2.5" class="tick tk-3" />
+      <rect x="513.4" y="39.4" width="7.5" height="19" rx="2.5" class="tick tk-4" />
+      <rect x="539.1" y="31.7" width="7.5" height="19" rx="2.5" class="tick tk-5" />
+      <rect x="566.0" y="32.1" width="7.5" height="19" rx="2.5" class="tick tk-6" />
+      <rect x="588.9" y="45.7" width="7.5" height="19" rx="2.5" class="tick tk-7" />
+      <rect x="602.1" y="68.9" width="7.5" height="19" rx="2.5" class="tick tk-8" />
+      <rect x="606.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-9" />
+      <rect x="602.1" y="122.1" width="7.5" height="19" rx="2.5" class="tick tk-10" />
+      <rect x="588.9" y="145.3" width="7.5" height="19" rx="2.5" class="tick tk-11" />
+      <rect x="566.0" y="158.9" width="7.5" height="19" rx="2.5" class="tick tk-12" />
+      <rect x="539.1" y="159.3" width="7.5" height="19" rx="2.5" class="tick tk-13" />
+      <rect x="513.4" y="151.6" width="7.5" height="19" rx="2.5" class="tick tk-14" />
+      <rect x="489.1" y="139.8" width="7.5" height="19" rx="2.5" class="tick tk-15" />
+      <rect x="465.9" y="125.9" width="7.5" height="19" rx="2.5" class="tick tk-16" />
+      <rect x="443.4" y="111.0" width="7.5" height="19" rx="2.5" class="tick tk-17" />
+      <rect x="421.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-18" />
+      <rect x="399.1" y="80.0" width="7.5" height="19" rx="2.5" class="tick tk-19" />
+      <rect x="376.6" y="65.1" width="7.5" height="19" rx="2.5" class="tick tk-20" />
+      <rect x="353.4" y="51.2" width="7.5" height="19" rx="2.5" class="tick tk-21" />
+      <rect x="329.1" y="39.4" width="7.5" height="19" rx="2.5" class="tick tk-22" />
+      <rect x="303.4" y="31.7" width="7.5" height="19" rx="2.5" class="tick tk-23" />
+      <rect x="276.6" y="32.1" width="7.5" height="19" rx="2.5" class="tick tk-24" />
+      <rect x="253.6" y="45.7" width="7.5" height="19" rx="2.5" class="tick tk-25" />
+      <rect x="240.3" y="68.9" width="7.5" height="19" rx="2.5" class="tick tk-26" />
+      <rect x="236.2" y="95.5" width="7.5" height="19" rx="2.5" class="tick tk-27" />
+      <rect x="240.3" y="122.1" width="7.5" height="19" rx="2.5" class="tick tk-28" />
+      <rect x="253.6" y="145.3" width="7.5" height="19" rx="2.5" class="tick tk-29" />
+      <rect x="276.6" y="158.9" width="7.5" height="19" rx="2.5" class="tick tk-30" />
+      <rect x="303.4" y="159.3" width="7.5" height="19" rx="2.5" class="tick tk-31" />
+      <rect x="329.1" y="151.6" width="7.5" height="19" rx="2.5" class="tick tk-32" />
+      <rect x="353.4" y="139.8" width="7.5" height="19" rx="2.5" class="tick tk-33" />
+      <rect x="376.6" y="125.9" width="7.5" height="19" rx="2.5" class="tick tk-34" />
+      <rect x="399.1" y="111.0" width="7.5" height="19" rx="2.5" class="tick tk-35" />
+      <g transform="translate(325, 244)">
+        <rect width="200" height="22" rx="11" fill="none" stroke="#ffe600" stroke-width="1.2" />
+        <text x="100" y="15" fill="#ffe600" class="code-pill-font" text-anchor="middle" filter="drop-shadow(0 0 4px #ffe600)">while (alive) { code(); }</text>
+      </g>
+    </g>
   </g>
 
   <!-- Typography Overlay -->

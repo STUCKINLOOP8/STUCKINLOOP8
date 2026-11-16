@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/STUCKINLOOP8">
-    <img src="assets/infinity-neon.svg" alt="STUCKINLOOP8 Infinity Terminal" width="100%" />
+    <img src="assets/infinity-neon.svg?v=frameless" alt="STUCKINLOOP8 Infinity Terminal" width="100%" />
   </a>
 </div>
 

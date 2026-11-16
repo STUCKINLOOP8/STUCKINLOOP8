@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 310" width="100%" height="310">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 280" width="100%" height="280">
   <defs>
     <pattern id="grid-dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
       <circle cx="2" cy="2" r="1" fill="#161b22" />
@@ -87,24 +87,18 @@
     </style>
   </defs>
 
-  <!-- Container Surface -->
-  <rect width="850" height="310" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="1.2" />
-  <rect width="850" height="310" rx="12" fill="url(#grid-dots)" opacity="0.7" />
-
-  <!-- Terminal Window Controls -->
-  <circle cx="24" cy="20" r="4.5" fill="#f85149" />
-  <circle cx="38" cy="20" r="4.5" fill="#e3b341" />
-  <circle cx="52" cy="20" r="4.5" fill="#2ea043" />
-  <text x="425" y="24" fill="#6e7681" font-family="monospace" font-size="11" text-anchor="middle">stuckinloop8@math-cs: ~</text>
+  <!-- Frameless Floating Card Surface -->
+  <rect width="850" height="280" rx="14" fill="#0d1117" stroke="#30363d" stroke-width="1.2" />
+  <rect width="850" height="280" rx="14" fill="url(#grid-dots)" opacity="0.6" />
 
   <!-- Fixed Base Code Pill Background -->
-  <g transform="translate(325, 272)">
+  <g transform="translate(325, 244)">
     <rect width="200" height="22" rx="11" fill="#161b22" />
   </g>
 
   <!-- ==================== NEON RED LAYER ==================== -->
   <g class="layer-red">
-    <text x="425" y="52" class="ascii-text text-red" text-anchor="middle" xml:space="preserve">
+    <text x="425" y="38" class="ascii-text text-red" text-anchor="middle" xml:space="preserve">
       <tspan x="425" dy="0">         .-----.         .-----.        </tspan>
       <tspan x="425" dy="16">       .'       '.     .'       '.      </tspan>
       <tspan x="425" dy="16">      /   .---.   \   /   .---.   \     </tspan>
@@ -116,7 +110,7 @@
       <tspan x="425" dy="16">       '.     .'       '.     .'        </tspan>
       <tspan x="425" dy="16">         '---'           '---'          </tspan>
     </text>
-    <g transform="translate(325, 272)">
+    <g transform="translate(325, 244)">
       <rect width="200" height="22" rx="11" fill="none" stroke="#ff2a5f" stroke-width="1.2" class="text-red" />
       <text x="100" y="15" fill="#ff2a5f" class="code-pill-font text-red" text-anchor="middle">while (alive) { code(); }</text>
     </g>
@@ -124,7 +118,7 @@
 
   <!-- ==================== NEON PINK LAYER ==================== -->
   <g class="layer-pink">
-    <text x="425" y="52" class="ascii-text text-pink" text-anchor="middle" xml:space="preserve">
+    <text x="425" y="38" class="ascii-text text-pink" text-anchor="middle" xml:space="preserve">
       <tspan x="425" dy="0">         .-----.         .-----.        </tspan>
       <tspan x="425" dy="16">       .'       '.     .'       '.      </tspan>
       <tspan x="425" dy="16">      /   .---.   \   /   .---.   \     </tspan>
@@ -136,7 +130,7 @@
       <tspan x="425" dy="16">       '.     .'       '.     .'        </tspan>
       <tspan x="425" dy="16">         '---'           '---'          </tspan>
     </text>
-    <g transform="translate(325, 272)">
+    <g transform="translate(325, 244)">
       <rect width="200" height="22" rx="11" fill="none" stroke="#ff1493" stroke-width="1.2" class="text-pink" />
       <text x="100" y="15" fill="#ff1493" class="code-pill-font text-pink" text-anchor="middle">while (alive) { code(); }</text>
     </g>
@@ -144,7 +138,7 @@
 
   <!-- ==================== CYBER GREEN LAYER ==================== -->
   <g class="layer-green">
-    <text x="425" y="52" class="ascii-text text-green" text-anchor="middle" xml:space="preserve">
+    <text x="425" y="38" class="ascii-text text-green" text-anchor="middle" xml:space="preserve">
       <tspan x="425" dy="0">         .-----.         .-----.        </tspan>
       <tspan x="425" dy="16">       .'       '.     .'       '.      </tspan>
       <tspan x="425" dy="16">      /   .---.   \   /   .---.   \     </tspan>
@@ -156,7 +150,7 @@
       <tspan x="425" dy="16">       '.     .'       '.     .'        </tspan>
       <tspan x="425" dy="16">         '---'           '---'          </tspan>
     </text>
-    <g transform="translate(325, 272)">
+    <g transform="translate(325, 244)">
       <rect width="200" height="22" rx="11" fill="none" stroke="#00ff66" stroke-width="1.2" class="text-green" />
       <text x="100" y="15" fill="#00ff66" class="code-pill-font text-green" text-anchor="middle">while (alive) { code(); }</text>
     </g>
@@ -164,7 +158,7 @@
 
   <!-- ==================== NEON YELLOW LAYER ==================== -->
   <g class="layer-yellow">
-    <text x="425" y="52" class="ascii-text text-yellow" text-anchor="middle" xml:space="preserve">
+    <text x="425" y="38" class="ascii-text text-yellow" text-anchor="middle" xml:space="preserve">
       <tspan x="425" dy="0">         .-----.         .-----.        </tspan>
       <tspan x="425" dy="16">       .'       '.     .'       '.      </tspan>
       <tspan x="425" dy="16">      /   .---.   \   /   .---.   \     </tspan>
@@ -176,15 +170,15 @@
       <tspan x="425" dy="16">       '.     .'       '.     .'        </tspan>
       <tspan x="425" dy="16">         '---'           '---'          </tspan>
     </text>
-    <g transform="translate(325, 272)">
+    <g transform="translate(325, 244)">
       <rect width="200" height="22" rx="11" fill="none" stroke="#ffe600" stroke-width="1.2" class="text-yellow" />
       <text x="100" y="15" fill="#ffe600" class="code-pill-font text-yellow" text-anchor="middle">while (alive) { code(); }</text>
     </g>
   </g>
 
   <!-- ==================== STATIC TYPOGRAPHY ==================== -->
-  <text x="425" y="235" class="title-text" font-size="20" text-anchor="middle">STUCKINLOOP8</text>
-  <text x="425" y="258" class="sub-text" font-size="11" text-anchor="middle">
+  <text x="425" y="210" class="title-text" font-size="20" text-anchor="middle">STUCKINLOOP8</text>
+  <text x="425" y="230" class="sub-text" font-size="11" text-anchor="middle">
     COMPUTER SCIENCE &amp; APPLIED MATHEMATICS <tspan fill="#ff2a5f">//</tspan> ASPIRING QUANT <tspan fill="#00ff66">//</tspan> UNDERGRAD
   </text>
 </svg>

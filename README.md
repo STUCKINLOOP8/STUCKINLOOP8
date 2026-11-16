@@ -15,7 +15,7 @@
 <br/>
 
 <div align="center">
-  <img src="assets/terminal-header.svg?v=clean-prompt" alt="Terminal Window" width="100%" />
+  <img src="assets/terminal-bar.svg" alt="Terminal Window" width="100%" />
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/github-contribution-grid-snake-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="assets/github-contribution-grid-snake.svg">

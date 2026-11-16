@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 310" width="100%" height="310">
+  <defs>
+    <pattern id="grid-dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#161b22" />
+    </pattern>
+
+    <style>
+      @keyframes fade-red {
+        0%, 100% { opacity: 1; }
+        20%, 80% { opacity: 0; }
+      }
+      @keyframes fade-pink {
+        0% { opacity: 0; }
+        25% { opacity: 1; }
+        45% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+      @keyframes fade-green {
+        0%, 25% { opacity: 0; }
+        50% { opacity: 1; }
+        70% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+      @keyframes fade-yellow {
+        0%, 50% { opacity: 0; }
+        75% { opacity: 1; }
+        95% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+
+      .layer-red {
+        animation: fade-red 8s infinite ease-in-out;
+      }
+      .layer-pink {
+        animation: fade-pink 8s infinite ease-in-out;
+      }
+      .layer-green {
+        animation: fade-green 8s infinite ease-in-out;
+      }
+      .layer-yellow {
+        animation: fade-yellow 8s infinite ease-in-out;
+      }
+
+      .ascii-text {
+        font-family: Consolas, "Courier New", "Fira Code", monospace;
+        font-size: 13.5px;
+        font-weight: 700;
+        white-space: pre;
+      }
+
+      .text-red {
+        fill: #ff2a5f;
+        filter: drop-shadow(0 0 5px #ff0055) drop-shadow(0 0 16px rgba(255, 0, 85, 0.85));
+      }
+      .text-pink {
+        fill: #ff1493;
+        filter: drop-shadow(0 0 5px #ff00bb) drop-shadow(0 0 16px rgba(255, 20, 147, 0.85));
+      }
+      .text-green {
+        fill: #00ff66;
+        filter: drop-shadow(0 0 5px #00ff66) drop-shadow(0 0 16px rgba(0, 255, 102, 0.85));
+      }
+      .text-yellow {
+        fill: #ffe600;
+        filter: drop-shadow(0 0 5px #ffe600) drop-shadow(0 0 16px rgba(255, 230, 0, 0.85));
+      }
+
+      .title-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Fira Code", monospace;
+        font-weight: 800;
+        letter-spacing: 7px;
+        fill: #f0f6fc;
+      }
+
+      .sub-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Fira Code", monospace;
+        font-weight: 600;
+        letter-spacing: 1px;
+        fill: #8b949e;
+      }
+
+      .code-pill-font {
+        font-family: "Fira Code", monospace;
+        font-weight: 600;
+        font-size: 11px;
+      }
+    </style>
+  </defs>
+
+  <!-- Container Surface -->
+  <rect width="850" height="310" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="1.2" />
+  <rect width="850" height="310" rx="12" fill="url(#grid-dots)" opacity="0.7" />
+
+  <!-- Terminal Window Controls -->
+  <circle cx="24" cy="20" r="4.5" fill="#f85149" />
+  <circle cx="38" cy="20" r="4.5" fill="#e3b341" />
+  <circle cx="52" cy="20" r="4.5" fill="#2ea043" />
+  <text x="425" y="24" fill="#6e7681" font-family="monospace" font-size="11" text-anchor="middle">stuckinloop8@math-cs: ~</text>
+
+  <!-- Fixed Base Code Pill Background -->
+  <g transform="translate(325, 272)">
+    <rect width="200" height="22" rx="11" fill="#161b22" />
+  </g>
+
+  <!-- ==================== NEON RED LAYER ==================== -->
+  <g class="layer-red">
+    <text x="425" y="52" class="ascii-text text-red" text-anchor="middle" xml:space="preserve">
+      <tspan x="425" dy="0">         .-----.         .-----.        </tspan>
+      <tspan x="425" dy="16">       .'       '.     .'       '.      </tspan>
+      <tspan x="425" dy="16">      /   .---.   \   /   .---.   \     </tspan>
+      <tspan x="425" dy="16">     /   /     \   \ /   /     \   \    </tspan>
+      <tspan x="425" dy="16">    |   |       |   X   |       |   |   </tspan>
+      <tspan x="425" dy="16">    |   |       |  / \  |       |   |   </tspan>
+      <tspan x="425" dy="16">     \   \     /  /   \  \     /   /    </tspan>
+      <tspan x="425" dy="16">      \   '---'  /     \  '---'  /      </tspan>
+      <tspan x="425" dy="16">       '.     .'       '.     .'        </tspan>
+      <tspan x="425" dy="16">         '---'           '---'          </tspan>
+    </text>
+    <g transform="translate(325, 272)">
+      <rect width="200" height="22" rx="11" fill="none" stroke="#ff2a5f" stroke-width="1.2" class="text-red" />
+      <text x="100" y="15" fill="#ff2a5f" class="code-pill-font text-red" text-anchor="middle">while (alive) { code(); }</text>
+    </g>
+  </g>
+
+  <!-- ==================== NEON PINK LAYER ==================== -->
+  <g class="layer-pink">
+    <text x="425" y="52" class="ascii-text text-pink" text-anchor="middle" xml:space="preserve">
+      <tspan x="425" dy="0">         .-----.         .-----.        </tspan>
+      <tspan x="425" dy="16">       .'       '.     .'       '.      </tspan>
+      <tspan x="425" dy="16">      /   .---.   \   /   .---.   \     </tspan>
+      <tspan x="425" dy="16">     /   /     \   \ /   /     \   \    </tspan>
+      <tspan x="425" dy="16">    |   |       |   X   |       |   |   </tspan>
+      <tspan x="425" dy="16">    |   |       |  / \  |       |   |   </tspan>
+      <tspan x="425" dy="16">     \   \     /  /   \  \     /   /    </tspan>
+      <tspan x="425" dy="16">      \   '---'  /     \  '---'  /      </tspan>
+      <tspan x="425" dy="16">       '.     .'       '.     .'        </tspan>
+      <tspan x="425" dy="16">         '---'           '---'          </tspan>
+    </text>
+    <g transform="translate(325, 272)">
+      <rect width="200" height="22" rx="11" fill="none" stroke="#ff1493" stroke-width="1.2" class="text-pink" />
+      <text x="100" y="15" fill="#ff1493" class="code-pill-font text-pink" text-anchor="middle">while (alive) { code(); }</text>
+    </g>
+  </g>
+
+  <!-- ==================== CYBER GREEN LAYER ==================== -->
+  <g class="layer-green">
+    <text x="425" y="52" class="ascii-text text-green" text-anchor="middle" xml:space="preserve">
+      <tspan x="425" dy="0">         .-----.         .-----.        </tspan>
+      <tspan x="425" dy="16">       .'       '.     .'       '.      </tspan>
+      <tspan x="425" dy="16">      /   .---.   \   /   .---.   \     </tspan>
+      <tspan x="425" dy="16">     /   /     \   \ /   /     \   \    </tspan>
+      <tspan x="425" dy="16">    |   |       |   X   |       |   |   </tspan>
+      <tspan x="425" dy="16">    |   |       |  / \  |       |   |   </tspan>
+      <tspan x="425" dy="16">     \   \     /  /   \  \     /   /    </tspan>
+      <tspan x="425" dy="16">      \   '---'  /     \  '---'  /      </tspan>
+      <tspan x="425" dy="16">       '.     .'       '.     .'        </tspan>
+      <tspan x="425" dy="16">         '---'           '---'          </tspan>
+    </text>
+    <g transform="translate(325, 272)">
+      <rect width="200" height="22" rx="11" fill="none" stroke="#00ff66" stroke-width="1.2" class="text-green" />
+      <text x="100" y="15" fill="#00ff66" class="code-pill-font text-green" text-anchor="middle">while (alive) { code(); }</text>
+    </g>
+  </g>
+
+  <!-- ==================== NEON YELLOW LAYER ==================== -->
+  <g class="layer-yellow">
+    <text x="425" y="52" class="ascii-text text-yellow" text-anchor="middle" xml:space="preserve">
+      <tspan x="425" dy="0">         .-----.         .-----.        </tspan>
+      <tspan x="425" dy="16">       .'       '.     .'       '.      </tspan>
+      <tspan x="425" dy="16">      /   .---.   \   /   .---.   \     </tspan>
+      <tspan x="425" dy="16">     /   /     \   \ /   /     \   \    </tspan>
+      <tspan x="425" dy="16">    |   |       |   X   |       |   |   </tspan>
+      <tspan x="425" dy="16">    |   |       |  / \  |       |   |   </tspan>
+      <tspan x="425" dy="16">     \   \     /  /   \  \     /   /    </tspan>
+      <tspan x="425" dy="16">      \   '---'  /     \  '---'  /      </tspan>
+      <tspan x="425" dy="16">       '.     .'       '.     .'        </tspan>
+      <tspan x="425" dy="16">         '---'           '---'          </tspan>
+    </text>
+    <g transform="translate(325, 272)">
+      <rect width="200" height="22" rx="11" fill="none" stroke="#ffe600" stroke-width="1.2" class="text-yellow" />
+      <text x="100" y="15" fill="#ffe600" class="code-pill-font text-yellow" text-anchor="middle">while (alive) { code(); }</text>
+    </g>
+  </g>
+
+  <!-- ==================== STATIC TYPOGRAPHY ==================== -->
+  <text x="425" y="235" class="title-text" font-size="20" text-anchor="middle">STUCKINLOOP8</text>
+  <text x="425" y="258" class="sub-text" font-size="11" text-anchor="middle">
+    COMPUTER SCIENCE &amp; APPLIED MATHEMATICS <tspan fill="#ff2a5f">//</tspan> ASPIRING QUANT <tspan fill="#00ff66">//</tspan> UNDERGRAD
+  </text>
+</svg>

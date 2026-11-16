@@ -25,11 +25,9 @@
 
 <br/>
 
-### `> TECH STACK & SYSTEM SPECS`
-
-- **Languages:** `Python` • `C++` • `SQL` • `Bash` • `JavaScript` • `HTML/CSS`
-- **Quantitative & ML:** `NumPy` • `Pandas` • `Backtesting` • `Probability & Statistics` • `DSA`
-- **Environment & Systems:** `Linux (Ubuntu)` • `Windows 11` • `VS Code` • `Cursor` • `Neovim` • `Git`
+<div align="center">
+  <img src="assets/tech-terminal.svg" alt="Tech Stack & System Specs" width="100%" />
+</div>
 
 <br/>
 

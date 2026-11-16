@@ -50,12 +50,14 @@ jobs:
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
+            assets/github-snake.svg
+            assets/github-snake-dark.svg?palette=github-dark
             assets/github-contribution-grid-snake.svg
             assets/github-contribution-grid-snake-dark.svg?palette=github-dark
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Enhance Snake Glowing and Eating Effect
+      - name: Apply Blue Neon Styling to Snake
         run: python enhance_snake.py
 
       - name: Commit and Push Changes

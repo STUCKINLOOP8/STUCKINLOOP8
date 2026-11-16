@@ -19,5 +19,11 @@ def set_blue_neon(file_path, color='#00d4ff', glow='filter:drop-shadow(0 0 6px #
     print(f"Updated {file_path} to Blue Neon")
 
 if __name__ == '__main__':
-    set_blue_neon('assets/github-contribution-grid-snake-dark.svg', '#00d4ff', 'filter:drop-shadow(0 0 6px #00d4ff) drop-shadow(0 0 12px #0077ff);')
-    set_blue_neon('assets/github-contribution-grid-snake.svg', '#0088ff', 'filter:drop-shadow(0 0 4px #0088ff);')
+    targets = [
+        ('assets/github-snake-dark.svg', '#00d4ff', 'filter:drop-shadow(0 0 6px #00d4ff) drop-shadow(0 0 12px #0077ff);'),
+        ('assets/github-snake.svg', '#0088ff', 'filter:drop-shadow(0 0 4px #0088ff);'),
+        ('assets/github-contribution-grid-snake-dark.svg', '#00d4ff', 'filter:drop-shadow(0 0 6px #00d4ff) drop-shadow(0 0 12px #0077ff);'),
+        ('assets/github-contribution-grid-snake.svg', '#0088ff', 'filter:drop-shadow(0 0 4px #0088ff);')
+    ]
+    for path, color, glow in targets:
+        set_blue_neon(path, color, glow)

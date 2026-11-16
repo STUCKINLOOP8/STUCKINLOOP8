@@ -32,11 +32,5 @@
 <br/>
 
 <div align="center">
-  <img src="assets/blackhole-ring.svg" alt="STUCKINLOOP8 Singularity Rotating Ring Accretion" width="100%" />
-</div>
-
-<br/>
-
-<div align="center">
-  <sub><code>[PROCESS: ACTIVE] &bull; while (alive) { code(); } &bull; STUCK IN LOOP 8</code></sub>
+  <img src="assets/blackhole-glitch.svg" alt="STUCKINLOOP8 Singularity Quantum Glitch Accretion" width="100%" />
 </div>

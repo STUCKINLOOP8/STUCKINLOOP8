@@ -32,7 +32,7 @@
 <br/>
 
 <div align="center">
-  <img src="assets/blackhole.svg" alt="Singularity Gravitational Infall" width="100%" />
+  <img src="assets/gargantua.svg" alt="Gargantua Singularity Gravitational Infall" width="100%" />
 </div>
 
 <br/>

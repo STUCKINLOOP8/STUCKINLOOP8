@@ -32,7 +32,7 @@
 <br/>
 
 <div align="center">
-  <img src="assets/blackhole-infall.svg" alt="STUCKINLOOP8 Singularity Gravitational Infall" width="100%" />
+  <img src="assets/blackhole-ring.svg" alt="STUCKINLOOP8 Singularity Rotating Ring Accretion" width="100%" />
 </div>
 
 <br/>

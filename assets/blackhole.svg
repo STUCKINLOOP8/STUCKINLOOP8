@@ -80,6 +80,47 @@
               fill: #ffffff;
               text-shadow: 0 0 8px rgba(0,212,255,0.8);
             }
+            
+      /* Continuous Accretion Ring Rotation and Stream Flow */
+      @keyframes ringFlowFast {
+        from { stroke-dashoffset: 0; }
+        to { stroke-dashoffset: -1200; }
+      }
+      @keyframes ringFlowMid {
+        from { stroke-dashoffset: 0; }
+        to { stroke-dashoffset: -1600; }
+      }
+      @keyframes ringFlowSlow {
+        from { stroke-dashoffset: 0; }
+        to { stroke-dashoffset: -2000; }
+      }
+      @keyframes photonSpin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes photonSpinRev {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(-360deg); }
+      }
+
+      .ring-stream-fast {
+        animation: ringFlowFast 6s linear infinite;
+      }
+      .ring-stream-mid {
+        animation: ringFlowMid 12s linear infinite;
+      }
+      .ring-stream-slow {
+        animation: ringFlowSlow 20s linear infinite;
+      }
+      .photon-ring-spin {
+        animation: photonSpin 10s linear infinite;
+        transform-origin: 440px 190px;
+      }
+      .photon-ring-rev {
+        animation: photonSpinRev 14s linear infinite;
+        transform-origin: 440px 190px;
+      }
+
             .tag-pill {
               fill: rgba(13, 17, 23, 0.85);
               stroke-width: 1;
@@ -138,16 +179,16 @@
 
         <!-- Main Accretion Disk Rings (Projected / Tilted 3D Ellipses) -->
         <g transform="translate(440, 190) rotate(-12) translate(-440, -190)">
-          <!-- Outer Diffuse Dust Ring -->
-          <ellipse cx="440" cy="190" rx="360" ry="75" stroke="#30363d" stroke-width="1" stroke-dasharray="4 8" fill="none" opacity="0.5"/>
-          <ellipse cx="440" cy="190" rx="300" ry="60" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="8 12" fill="none" opacity="0.35"/>
+          <!-- Outer Rotating Accretion Rings -->
+          <ellipse cx="440" cy="190" rx="360" ry="75" stroke="#30363d" stroke-width="1.2" stroke-dasharray="15 35 70 25" fill="none" opacity="0.6" class="ring-stream-slow"/>
+          <ellipse cx="440" cy="190" rx="300" ry="60" stroke="#00d4ff" stroke-width="1.8" stroke-dasharray="40 50 120 40" fill="none" opacity="0.5" class="ring-stream-slow"/>
           
-          <!-- Mid Glowing Spiral Ring -->
-          <ellipse cx="440" cy="190" rx="220" ry="44" stroke="url(#diskGrad)" stroke-width="2.5" fill="none" opacity="0.75" filter="url(#shadowFilter)"/>
+          <!-- Mid Glowing Rotating Accretion Ring -->
+          <ellipse cx="440" cy="190" rx="220" ry="44" stroke="url(#diskGrad)" stroke-width="3" stroke-dasharray="60 40 140 50" fill="none" opacity="0.85" filter="url(#shadowFilter)" class="ring-stream-mid"/>
           
-          <!-- Inner Photon Orbit Ring -->
-          <ellipse cx="440" cy="190" rx="130" ry="26" stroke="#00ff88" stroke-width="3" fill="none" opacity="0.9" filter="url(#shadowFilter)"/>
-          <ellipse cx="440" cy="190" rx="80" ry="16" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.8"/>
+          <!-- Inner High-Velocity Photon Orbit Rings -->
+          <ellipse cx="440" cy="190" rx="130" ry="26" stroke="#00ff88" stroke-width="3" stroke-dasharray="50 30 90 25" fill="none" opacity="0.95" filter="url(#shadowFilter)" class="ring-stream-fast"/>
+          <ellipse cx="440" cy="190" rx="80" ry="16" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="30 20 60 25" fill="none" opacity="0.9" class="ring-stream-fast"/>
         </g>
 
         <!-- Swirling Infall Gravitational Layer for Tech Labels -->
@@ -287,13 +328,20 @@
         <g>
           <!-- Radiant Photon Ring Glow -->
           <circle cx="440" cy="190" r="54" fill="url(#singularityGlow)"/>
-          <!-- Event Horizon Stark Shadow Edge -->
-          <circle cx="440" cy="190" r="42" fill="#000000" stroke="#00d4ff" stroke-width="1.8" filter="url(#shadowFilter)"/>
-          <circle cx="440" cy="190" r="39" fill="#000000"/>
           
-          <!-- Inner Singularity Infinity Glyph -->
-          <path d="M430 190C430 186 433 183 436 183C439 183 441 187 444 193C447 187 449 183 452 183C455 183 458 186 458 190C458 194 455 197 452 197C449 197 447 193 444 187C441 193 439 197 436 197C433 197 430 194 430 190Z" fill="none" stroke="#00d4ff" stroke-width="1.2" opacity="0.6"/>
-        </g>
+          <!-- Rotating Photon Ring Boundary (Spins like a relativistic ring) -->
+          <g class="photon-ring-spin">
+            <circle cx="440" cy="190" r="45" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="25 15 50 20" filter="url(#shadowFilter)"/>
+            <circle cx="440" cy="190" r="42" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-dasharray="10 20 40 30"/>
+          </g>
+          <g class="photon-ring-rev">
+            <circle cx="440" cy="190" r="48" fill="none" stroke="#00ff88" stroke-width="1" stroke-dasharray="15 30 60 25" opacity="0.75"/>
+          </g>
+
+          <!-- Pure Void Event Horizon (Total Singularity, zero light escapes) -->
+          <circle cx="440" cy="190" r="38" fill="#000000"/>
+          
+                  </g>
 
         <!-- Foreground Lower Accretion Arc (Passing in front of Event Horizon for 3D Depth) -->
         <g transform="translate(440, 190) rotate(-12) translate(-440, -190)" opacity="0.9">

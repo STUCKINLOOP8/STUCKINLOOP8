@@ -31,9 +31,13 @@
 
 <br/>
 
-<div align="center">
-  <img src="assets/gargantua.svg" alt="Gargantua Singularity Gravitational Infall" width="100%" />
-</div>
+### `> REPOSITORIES // CORE PROCESSES`
+
+| Project | Description | Stack |
+| :--- | :--- | :--- |
+| 📈 **[QUANT-JOURNEY](https://github.com/STUCKINLOOP8/QUANT-JOURNEY)** | Foundations for quantitative research, algorithmic trading, DSA, and probability models. | `Python` `Algorithms` `Quant` |
+| ⚡ **[chance-O-meter](https://github.com/STUCKINLOOP8/chance-O-meter)** | Predictive ride-booking engine computing live success probabilities and transit routing. | `JavaScript` `Transit Engine` |
+| 🧮 **[worst-calculator](https://github.com/STUCKINLOOP8/worst-calculator)** | Algorithmic experiment exploring UX anomalies and unconventional compute mechanics. | `Software` `Creative UI` |
 
 <br/>
 

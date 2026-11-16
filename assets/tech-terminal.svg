@@ -16,8 +16,8 @@
       }
       .term-text {
         font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-        font-size: 12.5px;
-        letter-spacing: 0.3px;
+        font-size: 12px;
+        letter-spacing: 0.2px;
       }
       .tag-bg {
         fill: #161b22;
@@ -54,7 +54,7 @@
     <circle cx="11" cy="10" r="3.5" fill="#3fb950">
       <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
     </circle>
-    <text x="21" y="14" fill="#7ee787" font-family="ui-monospace, monospace" font-size="10" font-weight="600" letter-spacing="0.4">specs: active</text>
+    <text x="21" y="14" fill="#7ee787" font-family="ui-monospace, monospace" font-size="10" font-weight="600" letter-spacing="0.4">stack: active</text>
   </g>
 
   <!-- Terminal Output Lines -->
@@ -63,91 +63,59 @@
     <text x="0" y="12" class="term-text" fill="#00d4ff" font-weight="700">❯ LANGUAGES</text>
     <text x="140" y="12" class="term-text" fill="#8b949e">::</text>
     
-    <!-- Badges -->
     <g transform="translate(160, -3)">
-      <!-- Python -->
-      <rect x="0" width="62" height="22" rx="4" class="tag-bg"/>
-      <text x="31" y="15" class="term-text" fill="#58a6ff" text-anchor="middle" font-weight="600">Python</text>
-
-      <!-- C++ -->
-      <rect x="70" width="48" height="22" rx="4" class="tag-bg"/>
-      <text x="94" y="15" class="term-text" fill="#58a6ff" text-anchor="middle" font-weight="600">C++</text>
-
-      <!-- SQL -->
-      <rect x="126" width="46" height="22" rx="4" class="tag-bg"/>
-      <text x="149" y="15" class="term-text" fill="#58a6ff" text-anchor="middle" font-weight="600">SQL</text>
-
-      <!-- Bash -->
-      <rect x="180" width="52" height="22" rx="4" class="tag-bg"/>
-      <text x="206" y="15" class="term-text" fill="#58a6ff" text-anchor="middle" font-weight="600">Bash</text>
-
-      <!-- JavaScript -->
-      <rect x="240" width="88" height="22" rx="4" class="tag-bg"/>
-      <text x="284" y="15" class="term-text" fill="#58a6ff" text-anchor="middle" font-weight="600">JavaScript</text>
-
-      <!-- HTML/CSS -->
-      <rect x="336" width="84" height="22" rx="4" class="tag-bg"/>
-      <text x="378" y="15" class="term-text" fill="#58a6ff" text-anchor="middle" font-weight="600">HTML/CSS</text>
+      <rect x="0" width="66" height="22" rx="4" class="tag-bg"/>
+      <text x="33.0" y="15" class="term-text" fill="#58a6ff" text-anchor="middle" font-weight="600">Python</text>
+      <rect x="74" width="46" height="22" rx="4" class="tag-bg"/>
+      <text x="97.0" y="15" class="term-text" fill="#58a6ff" text-anchor="middle" font-weight="600">C++</text>
+      <rect x="128" width="40" height="22" rx="4" class="tag-bg"/>
+      <text x="148.0" y="15" class="term-text" fill="#58a6ff" text-anchor="middle" font-weight="600">C</text>
+      <rect x="176" width="48" height="22" rx="4" class="tag-bg"/>
+      <text x="200.0" y="15" class="term-text" fill="#58a6ff" text-anchor="middle" font-weight="600">SQL</text>
+      <rect x="232" width="96" height="22" rx="4" class="tag-bg"/>
+      <text x="280.0" y="15" class="term-text" fill="#58a6ff" text-anchor="middle" font-weight="600">TypeScript</text>
+      <rect x="336" width="96" height="22" rx="4" class="tag-bg"/>
+      <text x="384.0" y="15" class="term-text" fill="#58a6ff" text-anchor="middle" font-weight="600">JavaScript</text>
+      <rect x="440" width="82" height="22" rx="4" class="tag-bg"/>
+      <text x="481.0" y="15" class="term-text" fill="#58a6ff" text-anchor="middle" font-weight="600">HTML/CSS</text>
     </g>
   </g>
 
-  <!-- Line 2: Quantitative & ML -->
+  <!-- Line 2: Quantitative & Math -->
   <g transform="translate(24, 104)">
-    <text x="0" y="12" class="term-text" fill="#00ff88" font-weight="700">❯ QUANT &amp; ML</text>
+    <text x="0" y="12" class="term-text" fill="#00ff88" font-weight="700">❯ QUANT &amp; MATH</text>
     <text x="140" y="12" class="term-text" fill="#8b949e">::</text>
 
     <g transform="translate(160, -3)">
-      <!-- NumPy -->
-      <rect x="0" width="64" height="22" rx="4" class="tag-bg"/>
-      <text x="32" y="15" class="term-text" fill="#7ee787" text-anchor="middle" font-weight="600">NumPy</text>
-
-      <!-- Pandas -->
-      <rect x="72" width="64" height="22" rx="4" class="tag-bg"/>
-      <text x="104" y="15" class="term-text" fill="#7ee787" text-anchor="middle" font-weight="600">Pandas</text>
-
-      <!-- Backtesting -->
-      <rect x="144" width="94" height="22" rx="4" class="tag-bg"/>
-      <text x="191" y="15" class="term-text" fill="#7ee787" text-anchor="middle" font-weight="600">Backtesting</text>
-
-      <!-- Stats & Prob -->
-      <rect x="246" width="168" height="22" rx="4" class="tag-bg"/>
-      <text x="330" y="15" class="term-text" fill="#7ee787" text-anchor="middle" font-weight="600">Probability &amp; Stats</text>
-
-      <!-- DSA -->
-      <rect x="422" width="48" height="22" rx="4" class="tag-bg"/>
-      <text x="446" y="15" class="term-text" fill="#7ee787" text-anchor="middle" font-weight="600">DSA</text>
+      <rect x="0" width="130" height="22" rx="4" class="tag-bg"/>
+      <text x="65.0" y="15" class="term-text" fill="#7ee787" text-anchor="middle" font-weight="600">NumPy &amp; Pandas</text>
+      <rect x="138" width="156" height="22" rx="4" class="tag-bg"/>
+      <text x="216.0" y="15" class="term-text" fill="#7ee787" text-anchor="middle" font-weight="600">Probability &amp; Stats</text>
+      <rect x="302" width="118" height="22" rx="4" class="tag-bg"/>
+      <text x="361.0" y="15" class="term-text" fill="#7ee787" text-anchor="middle" font-weight="600">Linear Algebra</text>
+      <rect x="428" width="160" height="22" rx="4" class="tag-bg"/>
+      <text x="508.0" y="15" class="term-text" fill="#7ee787" text-anchor="middle" font-weight="600">Stochastic Calculus</text>
+      <rect x="596" width="46" height="22" rx="4" class="tag-bg"/>
+      <text x="619.0" y="15" class="term-text" fill="#7ee787" text-anchor="middle" font-weight="600">DSA</text>
     </g>
   </g>
 
-  <!-- Line 3: Environment & Systems -->
+  <!-- Line 3: Tools & Environment -->
   <g transform="translate(24, 146)">
-    <text x="0" y="12" class="term-text" fill="#bc8cff" font-weight="700">❯ SYSTEMS &amp; ENV</text>
+    <text x="0" y="12" class="term-text" fill="#bc8cff" font-weight="700">❯ TOOLS &amp; ENV</text>
     <text x="140" y="12" class="term-text" fill="#8b949e">::</text>
 
     <g transform="translate(160, -3)">
-      <!-- Linux -->
-      <rect x="0" width="108" height="22" rx="4" class="tag-bg"/>
-      <text x="54" y="15" class="term-text" fill="#d2a8ff" text-anchor="middle" font-weight="600">Linux (Ubuntu)</text>
-
-      <!-- Windows 11 -->
-      <rect x="116" width="94" height="22" rx="4" class="tag-bg"/>
-      <text x="163" y="15" class="term-text" fill="#d2a8ff" text-anchor="middle" font-weight="600">Windows 11</text>
-
-      <!-- Neovim -->
-      <rect x="218" width="66" height="22" rx="4" class="tag-bg"/>
-      <text x="251" y="15" class="term-text" fill="#d2a8ff" text-anchor="middle" font-weight="600">Neovim</text>
-
-      <!-- VS Code -->
-      <rect x="292" width="76" height="22" rx="4" class="tag-bg"/>
-      <text x="330" y="15" class="term-text" fill="#d2a8ff" text-anchor="middle" font-weight="600">VS Code</text>
-
-      <!-- Cursor -->
-      <rect x="376" width="64" height="22" rx="4" class="tag-bg"/>
-      <text x="408" y="15" class="term-text" fill="#d2a8ff" text-anchor="middle" font-weight="600">Cursor</text>
-
-      <!-- Git -->
-      <rect x="448" width="46" height="22" rx="4" class="tag-bg"/>
-      <text x="471" y="15" class="term-text" fill="#d2a8ff" text-anchor="middle" font-weight="600">Git</text>
+      <rect x="0" width="106" height="22" rx="4" class="tag-bg"/>
+      <text x="53.0" y="15" class="term-text" fill="#d2a8ff" text-anchor="middle" font-weight="600">Git &amp; GitHub</text>
+      <rect x="114" width="66" height="22" rx="4" class="tag-bg"/>
+      <text x="147.0" y="15" class="term-text" fill="#d2a8ff" text-anchor="middle" font-weight="600">Docker</text>
+      <rect x="188" width="74" height="22" rx="4" class="tag-bg"/>
+      <text x="225.0" y="15" class="term-text" fill="#d2a8ff" text-anchor="middle" font-weight="600">VS Code</text>
+      <rect x="270" width="148" height="22" rx="4" class="tag-bg"/>
+      <text x="344.0" y="15" class="term-text" fill="#d2a8ff" text-anchor="middle" font-weight="600">Jupyter Notebooks</text>
+      <rect x="426" width="150" height="22" rx="4" class="tag-bg"/>
+      <text x="501.0" y="15" class="term-text" fill="#d2a8ff" text-anchor="middle" font-weight="600">Windows 11 / WSL2</text>
     </g>
   </g>
 </svg>

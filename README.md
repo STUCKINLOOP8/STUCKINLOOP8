@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/STUCKINLOOP8">
-    <img src="assets/banner.svg?v=neon-proportioned" alt="STUCKINLOOP8 Banner" width="100%" />
+    <img src="assets/banner.svg?v=cosmos-math-hybrid" alt="STUCKINLOOP8 Banner" width="100%" />
   </a>
 </div>
 
